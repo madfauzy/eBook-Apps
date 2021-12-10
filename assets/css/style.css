@@ -15,3 +15,11 @@ body {
 .btn-warning {
     font-weight: 500;
 }
+
+.not-found {
+    min-height: 430px;
+}
+
+.bi.bi-search {
+    font-size: 80px;
+}

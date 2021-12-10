@@ -20,8 +20,8 @@
 <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark position-sticky sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="index.php">
-                <img src="assets/img/logo_ebook.png" alt="Logo eBook"> eBook Apps
+            <a class="navbar-brand d-flex align-items-center" href="index.php">
+                <img class="me-1" src="assets/img/logo_ebook.png" alt="Logo eBook"> eBook Apps
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -52,11 +52,11 @@
     <div class="container my-4">
         <h1 class="h3 mb-4">Total Ebooks: <?= $totalEbook ?></h1>
         <?php if($totalEbook === 0) : ?>
-        <div class="text-center my-5 py-5">
-            <i class="bi bi-search display-1"></i>
-            <h3 class="my-5 py-1">Oops couldn't find any ebooks!</h3>
+        <div class="not-found d-flex flex-column align-items-center justify-content-center my-5">
+            <i class="bi bi-search"></i>
+            <h3 class="my-5">Oops couldn't find any ebooks!</h3>
         </div>
-        <?php endif; ?>
+        <?php else: ?>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-2 g-xl-3 g-2">
             <?php foreach($ebooks as $ebook) : ?>
             <div class="col">
@@ -94,6 +94,7 @@
             </div>
             <?php endforeach; ?>
         </div>
+        <?php endif; ?>
     </div>
 
     <footer>
