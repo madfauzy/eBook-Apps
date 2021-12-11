@@ -83,8 +83,7 @@
                                 <div class="btn-group m-auto" role="group" aria-label="Update and Delete">
                                     <!-- TODO: Buat Update eBook -->
                                     <a class="btn btn-sm btn-outline-success" href="#">Update</a>
-                                    <!-- TODO: Buat Delete eBook -->
-                                    <a class="btn btn-sm btn-outline-danger delete-ebook" href="#">Delete</a>
+                                    <a class="btn btn-sm btn-outline-danger delete-ebook" href="delete.php?id=<?= $ebook["id"] ?>&cover=<?= $ebook["cover"] ?>">Delete</a>
                                 </div>
                             </div>
                         </div>
@@ -101,5 +100,27 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="assets/js/script.js"></script>
+    <?php if(isset($_GET["delete"])) : ?>
+        <?php if($_GET["delete"] === "success") : ?>
+        <script>
+            Swal.fire(
+                'Deleted!',
+                'eBook has been deleted.',
+                'success'
+            );
+        </script>
+        <?php else : ?>
+        <script>
+            Swal.fire(
+                'Error!',
+                'Failed to delete eBook. Try again!',
+                'error'
+            );
+        </script>
+        <?php endif; ?>
+    <?php endif; ?>
 </body>
 </html>

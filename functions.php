@@ -25,3 +25,13 @@
 
         return mysqli_affected_rows($conn);
     }
+
+    function deleteEbook($ebook){
+        global $conn;
+        $id = htmlspecialchars($ebook["id"]);
+        $cover = htmlspecialchars($ebook["cover"]);
+
+        mysqli_query($conn,"DELETE FROM ebooks WHERE id = $id AND cover = '$cover'");
+
+        return mysqli_affected_rows($conn);
+    }
