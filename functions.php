@@ -19,9 +19,23 @@
         $author = htmlspecialchars($ebook["author"]);
         $category = htmlspecialchars($ebook["category"]);
         $price = htmlspecialchars($ebook["price"]);
-        $cover = htmlspecialchars($ebook["cover"]);
+        $cover = uploadCover();
+
+        if(!$cover){
+            return false;
+        }elseif($cover === "NothingUploaded"){
+            return "NothingUploaded";
+        }elseif($cover === "InvalidExtension"){
+            return "InvalidExtension";
+        }elseif($cover === "SizeTooBig"){
+            return "SizeTooBig";
+        }
 
         mysqli_query($conn,"INSERT INTO ebooks (title,author,category,price,cover) VALUES ('$title','$author','$category','$price','$cover')");
+
+        if(mysqli_affected_rows($conn) < 0){
+            unlink("assets/img/$cover");
+        }
 
         return mysqli_affected_rows($conn);
     }
@@ -33,6 +47,10 @@
 
         mysqli_query($conn,"DELETE FROM ebooks WHERE id = $id AND cover = '$cover'");
 
+        if(mysqli_affected_rows($conn) > 0){
+            unlink("assets/img/$cover");
+        }
+
         return mysqli_affected_rows($conn);
     }
 
@@ -43,7 +61,20 @@
         $author = htmlspecialchars($ebook["author"]);
         $category = htmlspecialchars($ebook["category"]);
         $price = htmlspecialchars($ebook["price"]);
-        $cover = htmlspecialchars($ebook["cover"]);
+        $oldCover = htmlspecialchars($ebook["oldCover"]);
+        $cover = uploadCover();
+
+        if(!$cover){
+            return false;
+        }elseif($cover === "NothingUploaded"){
+            $cover = $oldCover;
+        }elseif($cover === "InvalidExtension"){
+            return "InvalidExtension";
+        }elseif($cover === "SizeTooBig"){
+            return "SizeTooBig";
+        }elseif($cover !== $oldCover){
+            unlink("assets/img/$oldCover");
+        }
 
         mysqli_query($conn,"UPDATE ebooks SET title = '$title', author = '$author', category = '$category', price = '$price', cover = '$cover' WHERE id = $id");
 
@@ -52,4 +83,37 @@
 
     function searchEbook($keyword){
         return query("SELECT * FROM ebooks WHERE title LIKE '%$keyword%' OR author LIKE '%$keyword%' OR category LIKE '%$keyword%' OR price LIKE '%$keyword%'");
+    }
+
+    function uploadCover(){
+        $coverName = $_FILES["cover"]["name"];
+        $coverTmpName = $_FILES["cover"]["tmp_name"];
+        $coverError = $_FILES["cover"]["error"];
+        $coverSize = $_FILES["cover"]["size"];
+
+        $validExtension = ["jpg","jpeg","png"];
+        $coverExtension = strtolower(pathinfo($coverName, PATHINFO_EXTENSION));
+
+        if($coverError === 4){
+            return "NothingUploaded";
+        }
+
+        if(!in_array($coverExtension, $validExtension)){
+            return "InvalidExtension";
+        }
+
+        if($coverSize > 1000000){
+            return "SizeTooBig";
+        }
+
+        $newCoverName = "IMG_" . substr(md5(uniqid(rand(), true)), 0, 10) . ".$coverExtension";
+        $pathFile = "assets/img/$newCoverName";
+
+        if(file_exists($pathFile)){
+            return false;
+        }
+
+        move_uploaded_file($coverTmpName, $pathFile);
+
+        return $newCoverName;
     }

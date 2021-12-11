@@ -97,7 +97,8 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="cover">Cover</label>
-                        <input class="form-control" type="text" id="cover" name="cover" value="<?= $ebooks["cover"] ?>" maxlength="100" autocomplete="off" required>
+                        <div class="form-text text-md-end" id="coverInfo">Maximum File Size: 1 MB, Format File: jpg, jpeg, png</div>
+                        <input class="form-control" aria-describedby="coverInfo" type="file" id="cover" name="cover" value="<?= $ebooks["cover"] ?>">
                     </div>
                     <div class="mb-3 text-center">
                         <button class="btn btn-primary" type="submit" name="submit">Submit</button>
@@ -115,7 +116,23 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if(isset($_POST["submit"])) : ?>
         <?php $result = updateEbook($_POST) ?>
-        <?php if($result > 0) : ?>
+        <?php if($result === "InvalidExtension") : ?>
+        <script>
+            Swal.fire(
+                'Invalid Extension!',
+                'Supported Extensions: jpg, jpeg, and png.',
+                'warning'
+            );
+        </script>
+        <?php elseif($result === "SizeTooBig") : ?>
+        <script>
+            Swal.fire(
+                'Size Too Big!',
+                'Max File Size: 1MB.',
+                'warning'
+            );
+        </script>
+        <?php elseif($result > 0) : ?>
         <script>
             let timerInterval
             Swal.fire({

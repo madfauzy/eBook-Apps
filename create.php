@@ -86,7 +86,8 @@
             <div class="row mb-3 align-items-center">
                 <label class="col-md-2 col-form-label" for="cover">Cover</label>
                 <div class="col-md-10">
-                    <input class="form-control" type="text" id="cover" name="cover" maxlength="100" autocomplete="off" required>
+                    <div class="form-text text-end" id="coverInfo">Maximum File Size: 1 MB, Format File: jpg, jpeg, png</div>
+                    <input class="form-control" aria-describedby="coverInfo" type="file" id="cover" name="cover" required>
                 </div>
             </div>
             <div class="row mb-3">
@@ -104,7 +105,32 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if(isset($_POST["submit"])) : ?>
-        <?php if(addEbook($_POST) > 0) : ?>
+        <?php $result = addEbook($_POST) ?>
+        <?php if($result === "NothingUploaded") : ?>
+        <script>
+            Swal.fire(
+                'Nothing Uploaded!',
+                'Please upload cover.',
+                'warning'
+            );
+        </script>
+        <?php elseif($result === "InvalidExtension") : ?>
+        <script>
+            Swal.fire(
+                'Invalid Extension!',
+                'Supported Extensions: jpg, jpeg, and png.',
+                'warning'
+            );
+        </script>
+        <?php elseif($result === "SizeTooBig") : ?>
+        <script>
+            Swal.fire(
+                'Size Too Big!',
+                'Max File Size: 1MB.',
+                'warning'
+            );
+        </script>
+        <?php elseif($result > 0) : ?>
         <script>
             Swal.fire(
                 'Added!',
