@@ -3,6 +3,10 @@
 
     $ebooks = query("SELECT * FROM ebooks");
 
+    if(isset($_POST["search"])){
+        $ebooks = searchEbook($_POST["keyword"]);
+    }
+
     $totalEbook = count($ebooks);
 ?>
 <!DOCTYPE html>

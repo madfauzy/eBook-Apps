@@ -49,3 +49,7 @@
 
         return mysqli_affected_rows($conn);
     }
+
+    function searchEbook($keyword){
+        return query("SELECT * FROM ebooks WHERE title LIKE '%$keyword%' OR author LIKE '%$keyword%' OR category LIKE '%$keyword%' OR price LIKE '%$keyword%'");
+    }
