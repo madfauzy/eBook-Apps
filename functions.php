@@ -35,3 +35,17 @@
 
         return mysqli_affected_rows($conn);
     }
+
+    function updateEbook($ebook){
+        global $conn;
+        $id = htmlspecialchars($ebook["id"]);
+        $title = htmlspecialchars($ebook["title"]);
+        $author = htmlspecialchars($ebook["author"]);
+        $category = htmlspecialchars($ebook["category"]);
+        $price = htmlspecialchars($ebook["price"]);
+        $cover = htmlspecialchars($ebook["cover"]);
+
+        mysqli_query($conn,"UPDATE ebooks SET title = '$title', author = '$author', category = '$category', price = '$price', cover = '$cover' WHERE id = $id");
+
+        return mysqli_affected_rows($conn);
+    }

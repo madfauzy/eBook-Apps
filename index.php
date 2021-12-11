@@ -81,8 +81,7 @@
                             </ul>
                             <div class="card-body d-flex justify-content-between align-items-center">
                                 <div class="btn-group m-auto" role="group" aria-label="Update and Delete">
-                                    <!-- TODO: Buat Update eBook -->
-                                    <a class="btn btn-sm btn-outline-success" href="#">Update</a>
+                                    <a class="btn btn-sm btn-outline-success" href="update.php?id=<?= $ebook["id"] ?>">Update</a>
                                     <a class="btn btn-sm btn-outline-danger delete-ebook" href="delete.php?id=<?= $ebook["id"] ?>&cover=<?= $ebook["cover"] ?>">Delete</a>
                                 </div>
                             </div>
