@@ -12,3 +12,16 @@
 
         return $rows;
     }
+
+    function addEbook($ebook){
+        global $conn;
+        $title = htmlspecialchars($ebook["title"]);
+        $author = htmlspecialchars($ebook["author"]);
+        $category = htmlspecialchars($ebook["category"]);
+        $price = htmlspecialchars($ebook["price"]);
+        $cover = htmlspecialchars($ebook["cover"]);
+
+        mysqli_query($conn,"INSERT INTO ebooks (title,author,category,price,cover) VALUES ('$title','$author','$category','$price','$cover')");
+
+        return mysqli_affected_rows($conn);
+    }

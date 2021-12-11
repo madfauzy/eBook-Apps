@@ -36,8 +36,7 @@
                         <a class="nav-link" href="#">List eBook</a>
                     </li>
                     <li class="nav-item">
-                        <!-- TODO: Buat Add eBook -->
-                        <a class="nav-link" href="#">Add eBook</a>
+                        <a class="nav-link" href="create.php">Add eBook</a>
                     </li>
                 </ul>
                 <form class="d-flex" action="" method="post">
@@ -49,7 +48,7 @@
         </div>
     </nav>
 
-    <div class="container my-4">
+    <main class="container my-4">
         <h1 class="h3 mb-4">Total Ebooks: <?= $totalEbook ?></h1>
         <?php if($totalEbook === 0) : ?>
         <div class="not-found d-flex flex-column align-items-center justify-content-center my-5">
@@ -95,7 +94,7 @@
             <?php endforeach; ?>
         </div>
         <?php endif; ?>
-    </div>
+    </main>
 
     <footer>
         <div class="text-center text-light p-4 bg-dark">© 2021 Copyright eBook Apps. All Rights Reserved.</div>
