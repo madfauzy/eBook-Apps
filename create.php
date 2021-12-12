@@ -9,10 +9,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="assets/img/logo_ebook.png">
-    <title>eBook Apps</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Add eBook - eBook Apps</title>
 </head>
 <body class="bg-light">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark position-sticky sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.php">
                 <img class="me-1" src="assets/img/logo_ebook.png" alt="Logo eBook"> eBook Apps
@@ -37,7 +40,7 @@
         </div>
     </nav>
 
-    <main class="container bg-white text-md-center my-4 p-5 rounded shadow-sm">
+    <main class="container text-md-center my-4 p-4 rounded bg-white">
         <h1 class="h3 fw-bold text-center">Add eBook</h1>
         <p class="text-center">Add your favorite eBook now.</p>
         <hr>
@@ -86,7 +89,7 @@
             <div class="row mb-3 align-items-center">
                 <label class="col-md-2 col-form-label" for="cover">Cover</label>
                 <div class="col-md-10">
-                    <div class="form-text text-end" id="coverInfo">Maximum File Size: 1 MB, Format File: jpg, jpeg, png</div>
+                    <div class="form-text text-md-end" id="coverInfo">Maximum File Size: 1 MB, Format File: jpg, jpeg, png</div>
                     <input class="form-control" aria-describedby="coverInfo" type="file" id="cover" name="cover" required>
                 </div>
             </div>
@@ -106,15 +109,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if(isset($_POST["submit"])) : ?>
         <?php $result = addEbook($_POST) ?>
-        <?php if($result === "NothingUploaded") : ?>
-        <script>
-            Swal.fire(
-                'Nothing Uploaded!',
-                'Please upload cover.',
-                'warning'
-            );
-        </script>
-        <?php elseif($result === "InvalidExtension") : ?>
+        <?php if($result === "InvalidExtension") : ?>
         <script>
             Swal.fire(
                 'Invalid Extension!',

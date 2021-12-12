@@ -23,8 +23,6 @@
 
         if(!$cover){
             return false;
-        }elseif($cover === "NothingUploaded"){
-            return "NothingUploaded";
         }elseif($cover === "InvalidExtension"){
             return "InvalidExtension";
         }elseif($cover === "SizeTooBig"){
@@ -91,12 +89,12 @@
         $coverError = $_FILES["cover"]["error"];
         $coverSize = $_FILES["cover"]["size"];
 
-        $validExtension = ["jpg","jpeg","png"];
-        $coverExtension = strtolower(pathinfo($coverName, PATHINFO_EXTENSION));
-
         if($coverError === 4){
             return "NothingUploaded";
         }
+
+        $validExtension = ["jpg","jpeg","png"];
+        $coverExtension = strtolower(pathinfo($coverName, PATHINFO_EXTENSION));
 
         if(!in_array($coverExtension, $validExtension)){
             return "InvalidExtension";
@@ -106,7 +104,7 @@
             return "SizeTooBig";
         }
 
-        $newCoverName = "IMG_" . substr(md5(uniqid(rand(), true)), 0, 10) . ".$coverExtension";
+        $newCoverName = "IMG_" . md5(uniqid(rand(), true)) . ".$coverExtension";
         $pathFile = "assets/img/$newCoverName";
 
         if(file_exists($pathFile)){
