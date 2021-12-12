@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 12 Nov 2021 pada 12.34
+-- Waktu pembuatan: 12 Des 2021 pada 20.29
 -- Versi server: 10.4.21-MariaDB
 -- Versi PHP: 8.0.11
 
@@ -35,7 +35,7 @@ CREATE TABLE `ebooks` (
   `author` varchar(100) NOT NULL,
   `category` varchar(100) NOT NULL,
   `price` char(4) NOT NULL,
-  `cover` varchar(100) NOT NULL
+  `cover` char(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -45,7 +45,7 @@ CREATE TABLE `ebooks` (
 INSERT INTO `ebooks` (`id`, `title`, `author`, `category`, `price`, `cover`) VALUES
 (1, 'Tutorial Laravel', 'Tutorialspoint', 'Programming Languages', 'Paid', 'tutorial_laravel.jpg'),
 (2, 'Tutorial C++', 'Tutorialspoint', 'Programming Languages', 'Paid', 'tutorial_c++.jpg'),
-(3, 'Tutorial CSS', 'Tutorialspoint', 'Programming Languages', 'Paid', 'tutorial_css.jpg');
+(3, 'Tutorial CSS', 'Tutorialspoint', 'Programming Languages', 'Free', 'tutorial_css.jpg');
 
 --
 -- Indexes for dumped tables
