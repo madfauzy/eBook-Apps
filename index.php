@@ -19,10 +19,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="assets/img/logo_ebook.png">
-    <title>eBook Apps</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Home - eBook Apps</title>
 </head>
 <body class="bg-light">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark position-sticky sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.php">
                 <img class="me-1" src="assets/img/logo_ebook.png" alt="Logo eBook"> eBook Apps
@@ -44,7 +47,6 @@
                     </li>
                 </ul>
                 <form class="d-flex" action="" method="post">
-                    <!-- TODO: Buat Search eBook -->
                     <input class="form-control me-2" aria-label="Search" type="search" name="keyword" placeholder="Search eBooks" autocomplete="off" autofocus>
                     <button class="btn btn-warning" type="submit" name="search">Search</button>
                 </form>
@@ -55,46 +57,52 @@
     <main class="container my-4">
         <h1 class="h3 mb-4">Total Ebooks: <?= $totalEbook ?></h1>
         <?php if($totalEbook === 0) : ?>
-        <div class="not-found d-flex flex-column align-items-center justify-content-center my-5">
+        <div class="not-found d-flex flex-column align-items-center justify-content-center">
             <i class="bi bi-search"></i>
-            <h3 class="my-5">Oops couldn't find any ebooks!</h3>
+            <h2 class="my-4">Oops couldn't find any ebooks!</h2>
         </div>
         <?php else: ?>
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-2 g-xl-3 g-2">
-            <?php foreach($ebooks as $ebook) : ?>
-            <div class="col">
-                <div class="card h-100 shadow-sm">
-                    <div class="row g-0">
-                        <div class="col-xl-4 text-center">
-                            <img class="img-fluid rounded-start" src="assets/img/<?= $ebook["cover"] ?>" alt="<?= $ebook["cover"] ?>">
-                        </div>
-                        <div class="col-xl-8">
-                            <div class="card-body">
-                                <h5 class="card-title text-center fw-bold my-2"><?= $ebook["title"] ?></h5>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Author: <?= $ebook["author"] ?></li>
-                                <li class="list-group-item">Category: <?= $ebook["category"] ?></li>
-                                <li class="list-group-item">Price: 
-                                    <?php if($ebook["price"] === "Free") : ?>
-                                    <span class="badge bg-success">Free</span>
-                                    <?php else : ?>
-                                    <span class="badge bg-danger">Paid</span>
-                                    <?php endif; ?>
-                                </li>
-                            </ul>
-                            <div class="card-body d-flex justify-content-between align-items-center">
-                                <div class="btn-group m-auto" role="group" aria-label="Update and Delete">
-                                    <a class="btn btn-sm btn-outline-success" href="update.php?id=<?= $ebook["id"] ?>">Update</a>
-                                    <a class="btn btn-sm btn-outline-danger delete-ebook" href="delete.php?id=<?= $ebook["id"] ?>&cover=<?= $ebook["cover"] ?>">Delete</a>
+            <?php if($totalEbook === 1 || $totalEbook === 2) : ?>
+            <div class="list-ebook full-height">
+            <?php else: ?>
+            <div class="list-ebook">
+            <?php endif; ?>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-2 g-xl-3 g-2">
+                    <?php foreach($ebooks as $ebook) : ?>
+                    <div class="col">
+                        <div class="card h-100 shadow-sm">
+                            <div class="row g-0">
+                                <div class="col-xl-4 text-center">
+                                    <img class="img-fluid rounded-start" src="assets/img/<?= $ebook["cover"] ?>" alt="<?= $ebook["cover"] ?>">
+                                </div>
+                                <div class="col-xl-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center fw-bold my-2"><?= $ebook["title"] ?></h5>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Author: <?= $ebook["author"] ?></li>
+                                        <li class="list-group-item">Category: <?= $ebook["category"] ?></li>
+                                        <li class="list-group-item">Price: 
+                                            <?php if($ebook["price"] === "Free") : ?>
+                                            <span class="badge bg-success">Free</span>
+                                            <?php else : ?>
+                                            <span class="badge bg-danger">Paid</span>
+                                            <?php endif; ?>
+                                        </li>
+                                    </ul>
+                                    <div class="card-body text-center">
+                                        <div class="btn-group" role="group" aria-label="Update and Delete">
+                                            <a class="btn btn-sm btn-outline-success" href="update.php?id=<?= $ebook["id"] ?>">Update</a>
+                                            <a class="btn btn-sm btn-outline-danger delete-ebook" href="delete.php?id=<?= $ebook["id"] ?>&cover=<?= $ebook["cover"] ?>">Delete</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
-            <?php endforeach; ?>
-        </div>
         <?php endif; ?>
     </main>
 

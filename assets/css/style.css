@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Courgette&family=Quicksand:wght@300;400;500;600;700&display=swap");
-
 body {
     font-family: "Quicksand", sans-serif;
 }
@@ -17,9 +15,19 @@ body {
 }
 
 .not-found {
-    min-height: 430px;
+    min-height: 378px;
 }
 
-.bi.bi-search {
+.bi-search {
     font-size: 80px;
+}
+
+.full-height {
+    min-height: 394px;
+}
+
+@media screen and (max-width: 576px) {
+    .not-found {
+        min-height: 450px;
+    }
 }
