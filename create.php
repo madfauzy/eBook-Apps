@@ -40,7 +40,7 @@
         </div>
     </nav>
 
-    <main class="container text-md-center my-4 p-4 rounded bg-white">
+    <main class="container text-md-center my-4 p-4">
         <h1 class="h3 fw-bold text-center">Add eBook</h1>
         <p class="text-center">Add your favorite eBook now.</p>
         <hr>

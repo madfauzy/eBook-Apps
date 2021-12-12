@@ -15,10 +15,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="assets/img/logo_ebook.png">
-    <title>eBook Apps</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Update eBook - eBook Apps</title>
 </head>
 <body class="bg-light">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark position-sticky sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.php">
                 <img class="me-1" src="assets/img/logo_ebook.png" alt="Logo eBook"> eBook Apps
@@ -43,7 +46,7 @@
         </div>
     </nav>
 
-    <main class="container bg-white my-4 p-5 rounded shadow-sm">
+    <main class="container my-4 p-4">
         <h1 class="h3 fw-bold text-center">Update eBook</h1>
         <p class="text-center">Update your favorite eBook now.</p>
         <hr>
@@ -51,7 +54,7 @@
             <div class="row">
                 <div class="col-md-3 text-center">
                     <figure class="figure">
-                        <img class="figure-img img-thumbnail rounded" src="assets/img/<?= $ebooks["cover"] ?>" alt="<?= $ebooks["cover"] ?>">
+                        <img class="figure-img img-thumbnail" src="assets/img/<?= $ebooks["cover"] ?>" alt="<?= $ebooks["cover"] ?>">
                         <figcaption class="figure-caption">
                             <input class="form-control-plaintext" type="text" name="oldCover" value="<?= $ebooks["cover"] ?>" readonly>
                         </figcaption>
@@ -98,7 +101,7 @@
                     <div class="mb-3">
                         <label class="form-label" for="cover">Cover</label>
                         <div class="form-text text-md-end" id="coverInfo">Maximum File Size: 1 MB, Format File: jpg, jpeg, png</div>
-                        <input class="form-control" aria-describedby="coverInfo" type="file" id="cover" name="cover" value="<?= $ebooks["cover"] ?>">
+                        <input class="form-control" aria-describedby="coverInfo" type="file" id="cover" name="cover">
                     </div>
                     <div class="mb-3 text-center">
                         <button class="btn btn-primary" type="submit" name="submit">Submit</button>
