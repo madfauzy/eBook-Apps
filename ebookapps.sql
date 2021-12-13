@@ -54,7 +54,7 @@ INSERT INTO `ebooks` (`id`, `title`, `author`, `category`, `price`, `cover`) VAL
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(20) NOT NULL,
-  `password` char(60) NOT NULL
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
