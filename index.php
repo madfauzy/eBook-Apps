@@ -1,4 +1,10 @@
 <?php 
+    session_start();
+
+    if(!isset($_SESSION["username"])){
+        header("Location: login.php");
+    }
+
     require "functions.php";
 
     $ebooks = query("SELECT * FROM ebooks");
@@ -50,6 +56,7 @@
                     <input class="form-control me-2" aria-label="Search" type="search" name="keyword" placeholder="Search eBooks" autocomplete="off" autofocus>
                     <button class="btn btn-warning" type="submit" name="search">Search</button>
                 </form>
+                <a class="btn btn-danger mx-2 my-lg-0 my-2 fw-bold" href="logout.php">Logout</a>
             </div>
         </div>
     </nav>

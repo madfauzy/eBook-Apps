@@ -33,6 +33,7 @@
                 <label for="confirmPassword">Confirm Password</label>
             </div>
             <button class="w-100 btn btn-lg btn-warning mt-3" type="submit" name="signup">Sign Up</button>
+            <p class="my-3">Already have an account? <a class="link-danger text-decoration-none fw-bold" href="login.php">Sign In</a></p>
             <p class="mt-5 mb-3 text-muted">&copy; 2021 Copyright eBook Apps</p>
         </form>
     </div>

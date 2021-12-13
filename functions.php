@@ -138,12 +138,12 @@
 
         $password = password_hash($password,PASSWORD_DEFAULT);
 
-        mysqli_query($conn,"INSERT INTO users VALUES('','$username','$password')");
+        mysqli_query($conn,"INSERT INTO users (username,password) VALUES ('$username','$password')");
 
         return mysqli_affected_rows($conn);
     }
 
-    function userSignIn($user){
+    function userLogin($user){
         global $conn;
         $username = mysqli_real_escape_string($conn,$user["username"]);
         $password = mysqli_real_escape_string($conn,$user["password"]);

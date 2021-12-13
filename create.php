@@ -1,4 +1,12 @@
-<?php require "functions.php" ?>
+<?php 
+    session_start();
+        
+    if(!isset($_SESSION["username"])){
+        header("Location: login.php");
+    }
+    
+    require "functions.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,6 +44,7 @@
                         <a class="nav-link active" aria-current="page" href="create.php">Add eBook</a>
                     </li>
                 </ul>
+                <a class="btn btn-danger mx-2 my-lg-0 my-2 fw-bold" href="logout.php">Logout</a>
             </div>
         </div>
     </nav>

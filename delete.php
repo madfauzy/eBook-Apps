@@ -1,4 +1,10 @@
 <?php 
+    session_start();
+        
+    if(!isset($_SESSION["username"])){
+        header("Location: login.php");
+    }
+    
     require "functions.php";
 
     if(deleteEbook($_GET) > 0){
