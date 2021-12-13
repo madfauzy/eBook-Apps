@@ -49,7 +49,7 @@
         <script>
             let timerInterval
             Swal.fire({
-                title: 'Login successfully!',
+                title: 'Success!',
                 html: '<b>You Will Be Redirected!</b>',
                 icon: 'success',
                 allowOutsideClick: false,

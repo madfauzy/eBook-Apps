@@ -67,11 +67,25 @@
         </script>
         <?php elseif($result > 0) : ?>
         <script>
-            Swal.fire(
-                'Signed Up!',
-                'User signed up successfully.',
-                'success'
-            );
+            let timerInterval
+            Swal.fire({
+                title: 'Success!',
+                html: '<b>You Will Be Redirected!</b>',
+                icon: 'success',
+                allowOutsideClick: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading()
+                },
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            }).then((result) => {
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    window.location.href = 'signin.php';
+                }
+            });
         </script>
         <?php else : ?>
         <script>

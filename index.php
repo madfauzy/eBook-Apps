@@ -118,7 +118,7 @@
         <?php if($_GET["delete"] === "success") : ?>
         <script>
             Swal.fire(
-                'Deleted!',
+                'Success!',
                 'eBook has been deleted.',
                 'success'
             );

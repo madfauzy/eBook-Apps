@@ -128,7 +128,7 @@
         <?php elseif($result > 0) : ?>
         <script>
             Swal.fire(
-                'Added!',
+                'Success!',
                 'eBook has been added.',
                 'success'
             );

@@ -139,11 +139,11 @@
         <script>
             let timerInterval
             Swal.fire({
-                title: 'Updated!',
+                title: 'Success!',
                 html: 'eBook has been updated. <b>Wait a second!</b>',
                 icon: 'success',
                 allowOutsideClick: false,
-                timer: 4000,
+                timer: 3000,
                 timerProgressBar: true,
                 didOpen: () => {
                     Swal.showLoading()
