@@ -16,7 +16,7 @@
     <title>Sign Up - eBook Apps</title>
 </head>
 <body>
-    <div class="form-signin text-center">
+    <div class="form-sign text-center">
         <form action="" method="post">
             <img class="logo mb-3" src="assets/img/logo_ebook.png" alt="Logo eBook">
             <h1 class="h3 mb-3">Please Sign Up</h1>
