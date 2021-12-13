@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 12 Des 2021 pada 20.29
+-- Waktu pembuatan: 13 Des 2021 pada 11.05
 -- Versi server: 10.4.21-MariaDB
 -- Versi PHP: 8.0.11
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `ebookapps`
 --
-
-CREATE DATABASE `ebookapps`;
 
 -- --------------------------------------------------------
 
@@ -47,6 +45,18 @@ INSERT INTO `ebooks` (`id`, `title`, `author`, `category`, `price`, `cover`) VAL
 (2, 'Tutorial C++', 'Tutorialspoint', 'Programming Languages', 'Paid', 'tutorial_c++.jpg'),
 (3, 'Tutorial CSS', 'Tutorialspoint', 'Programming Languages', 'Free', 'tutorial_css.jpg');
 
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `password` char(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Indexes for dumped tables
 --
@@ -58,6 +68,12 @@ ALTER TABLE `ebooks`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
@@ -66,7 +82,12 @@ ALTER TABLE `ebooks`
 --
 ALTER TABLE `ebooks`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-COMMIT;
+
+--
+-- AUTO_INCREMENT untuk tabel `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
