@@ -94,9 +94,9 @@
         }
 
         $validExtension = ["jpg","jpeg","png"];
-        $coverExtension = strtolower(pathinfo($coverName, PATHINFO_EXTENSION));
+        $coverExtension = strtolower(pathinfo($coverName,PATHINFO_EXTENSION));
 
-        if(!in_array($coverExtension, $validExtension)){
+        if(!in_array($coverExtension,$validExtension)){
             return "InvalidExtension";
         }
 
@@ -104,14 +104,14 @@
             return "SizeTooBig";
         }
 
-        $newCoverName = "IMG_" . md5(uniqid(rand(), true)) . ".$coverExtension";
+        $newCoverName = "IMG_" . md5(uniqid(rand(),true)) . ".$coverExtension";
         $pathFile = "assets/img/$newCoverName";
 
         if(file_exists($pathFile)){
             return false;
         }
 
-        move_uploaded_file($coverTmpName, $pathFile);
+        move_uploaded_file($coverTmpName,$pathFile);
 
         return $newCoverName;
     }
@@ -126,9 +126,9 @@
             return "isEmpty";
         }
 
-        $checkUsername = query("SELECT username FROM users WHERE username = '$username'");
+        $result = query("SELECT username FROM users WHERE username = '$username'");
 
-        if(!empty($checkUsername)){
+        if(!empty($result)){
             return "UsernameAlreadyExist";
         }
 
@@ -136,9 +136,28 @@
             return "WrongPassword";
         }
 
-        $password = password_hash($password, PASSWORD_DEFAULT);
+        $password = password_hash($password,PASSWORD_DEFAULT);
 
         mysqli_query($conn,"INSERT INTO users VALUES('','$username','$password')");
 
         return mysqli_affected_rows($conn);
+    }
+
+    function userSignIn($user){
+        global $conn;
+        $username = mysqli_real_escape_string($conn,$user["username"]);
+        $password = mysqli_real_escape_string($conn,$user["password"]);
+        $result = query("SELECT * FROM users WHERE username = '$username'");
+
+        if(empty($result)){
+            return "UsernameDoesNotExist";
+        }
+
+        $passwordHash = $result[0]["password"];
+
+        if(password_verify($password,$passwordHash)){
+            return "Success";
+        }
+
+        return false;
     }
