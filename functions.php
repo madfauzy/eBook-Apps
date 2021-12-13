@@ -115,3 +115,30 @@
 
         return $newCoverName;
     }
+
+    function userSignUp($user){
+        global $conn;
+        $username = str_replace(' ', '',strtolower(stripslashes($user["username"])));
+        $password = mysqli_real_escape_string($conn,$user["password"]);
+        $confirmPassword = mysqli_real_escape_string($conn,$user["confirmPassword"]);
+
+        if(empty(trim($username)) || empty(trim($password))){
+            return "isEmpty";
+        }
+
+        $checkUsername = query("SELECT username FROM users WHERE username = '$username'");
+
+        if(!empty($checkUsername)){
+            return "UsernameAlreadyExist";
+        }
+
+        if($password !== $confirmPassword){
+            return "WrongPassword";
+        }
+
+        $password = password_hash($password, PASSWORD_DEFAULT);
+
+        mysqli_query($conn,"INSERT INTO users VALUES('','$username','$password')");
+
+        return mysqli_affected_rows($conn);
+    }
