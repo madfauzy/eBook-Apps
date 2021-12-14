@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 -- Database: `ebookapps`
 --
 
+CREATE DATABASE `ebookapps`;
+
 -- --------------------------------------------------------
 
 --
@@ -54,7 +56,8 @@ INSERT INTO `ebooks` (`id`, `title`, `author`, `category`, `price`, `cover`) VAL
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(20) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `level` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

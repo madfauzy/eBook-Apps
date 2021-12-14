@@ -138,7 +138,7 @@
 
         $password = password_hash($password,PASSWORD_DEFAULT);
 
-        mysqli_query($conn,"INSERT INTO users (username,password) VALUES ('$username','$password')");
+        mysqli_query($conn,"INSERT INTO users (username,password,level) VALUES ('$username','$password','member')");
 
         return mysqli_affected_rows($conn);
     }

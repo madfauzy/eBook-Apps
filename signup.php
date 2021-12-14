@@ -84,7 +84,7 @@
                 }
             }).then((result) => {
                 if (result.dismiss === Swal.DismissReason.timer) {
-                    window.location.href = 'signin.php';
+                    window.location.href = 'login.php';
                 }
             });
         </script>
