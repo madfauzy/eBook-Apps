@@ -9,10 +9,26 @@ eBook Apps adalah website yang menyajikan data-data ebook dibidang IT.
 git clone https://github.com/madfauzy/eBook-Apps.git
 ```
 
-2. **Jalankan XAMPP dan Import `ebookapps.sql` ke phpmyadmin**
+2. **Jalankan XAMPP dan buat Database ebookapps**
 
-3. **Jalankan Website**
+3. **Import `ebookapps.sql` ke Database ebookapps**
+
+4. **Jalankan Website**
 
 ```
 https://localhost/eBook-Apps/
+```
+
+## Login Account
+
+```
+Akun Admin
+Username: admin
+Password: admin
+```
+
+```
+Akun Member
+Username: member
+Password: member
 ```
