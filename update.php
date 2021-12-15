@@ -119,7 +119,7 @@
     </main> 
 
     <footer>
-        <div class="text-center text-light p-4 bg-dark">© 2021 Copyright eBook Apps. All Rights Reserved.</div>
+        <div class="text-center text-light p-4 bg-dark">&copy; 2021 Copyright <a class="link-warning text-decoration-none fw-bold" href="https://github.com/madfauzy" target="_blank">Ahmad Fauzy</a>. All Rights Reserved.</div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -138,7 +138,7 @@
         <script>
             Swal.fire(
                 'Size Too Big!',
-                'Max File Size: 1MB.',
+                'Max File Size: 1 MB.',
                 'warning'
             );
         </script>
