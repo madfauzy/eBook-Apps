@@ -150,7 +150,7 @@
         $result = query("SELECT * FROM users WHERE username = '$username'");
 
         if(empty($result)){
-            return "UsernameDoesNotExist";
+            return false;
         }
 
         $passwordHash = $result[0]["password"];

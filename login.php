@@ -21,13 +21,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <title>Log In - eBook Apps</title>
+    <title>Login - eBook Apps</title>
 </head>
 <body>
     <div class="form-sign text-center">
         <form action="" method="post">
             <img class="logo mb-3" src="assets/img/logo_ebook.png" alt="Logo eBook">
-            <h1 class="h3 mb-3">Please Log In</h1>
+            <h1 class="h3 mb-3">Login to eBook Apps</h1>
             <div class="form-floating">
                 <input class="form-control" type="text" id="username" name="username" placeholder="Username" maxlength="20" autocomplete="off" required autofocus>
                 <label for="username">Username</label>
@@ -36,9 +36,9 @@
                 <input class="form-control" type="password" id="password" name="password" placeholder="Password" autocomplete="off" required>
                 <label for="password">Password</label>
             </div>
-            <button class="w-100 btn btn-lg btn-warning mt-3" type="submit" name="login">Log In</button>
+            <button class="w-100 btn btn-lg btn-warning mt-3" type="submit" name="login">Login</button>
             <p class="my-3">Not a member yet? <a class="link-danger text-decoration-none fw-bold" href="signup.php">Sign Up</a></p>
-            <p class="mt-5 mb-3 text-muted">&copy; 2021 Copyright eBook Apps</p>
+            <p class="mt-5 mb-3 text-muted">&copy; 2021 Copyright <a class="link-warning text-decoration-none fw-bold" href="https://github.com/madfauzy" target="_blank">Ahmad Fauzy</a></p>
         </form>
     </div>
 
@@ -46,42 +46,16 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if(isset($_POST["login"])) : ?>
         <?php $result = userLogin($_POST) ?>
-        <?php if($result === "UsernameDoesNotExist") : ?>
-        <script>
-            Swal.fire(
-                'Warning!',
-                'Username Doesn\'t Exist!',
-                'warning'
-            );
-        </script>
-        <?php elseif($result === "Success") : ?>
-        <?php $_SESSION["username"] = $_POST["username"] ?>
-        <script>
-            let timerInterval
-            Swal.fire({
-                title: 'Success!',
-                html: '<b>You Will Be Redirected!</b>',
-                icon: 'success',
-                allowOutsideClick: false,
-                timer: 2000,
-                timerProgressBar: true,
-                didOpen: () => {
-                    Swal.showLoading()
-                },
-                willClose: () => {
-                    clearInterval(timerInterval)
-                }
-            }).then((result) => {
-                if (result.dismiss === Swal.DismissReason.timer) {
-                    window.location.href = 'index.php';
-                }
-            });
-        </script>
+        <?php 
+            if($result === "Success") :
+                $_SESSION["username"] = $_POST["username"];
+                header("Location: index.php");
+        ?>
         <?php else : ?>
         <script>
             Swal.fire(
                 'Warning!',
-                'Wrong Password!',
+                'Incorrect username or password!',
                 'warning'
             );
         </script>

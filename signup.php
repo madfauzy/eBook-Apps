@@ -62,7 +62,7 @@
         <script>
             Swal.fire(
                 'Warning!',
-                'Wrong password confirmation!',
+                'Incorrect password confirmation!',
                 'warning'
             );
         </script>
