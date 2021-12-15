@@ -34,7 +34,7 @@
             </div>
             <button class="w-100 btn btn-lg btn-warning mt-3" type="submit" name="signup">Sign Up</button>
             <p class="my-3">Already have an account? <a class="link-danger text-decoration-none fw-bold" href="login.php">Sign In</a></p>
-            <p class="mt-5 mb-3 text-muted">&copy; 2021 Copyright eBook Apps</p>
+            <p class="mt-5 mb-3 text-muted">&copy; 2021 Copyright <a class="link-warning text-decoration-none fw-bold" href="https://github.com/madfauzy" target="_blank">Ahmad Fauzy</a></p>
         </form>
     </div>
 
@@ -42,7 +42,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if(isset($_POST["signup"])) : ?>
         <?php $result = userSignUp($_POST) ?>
-        <?php if($result === "isEmpty") : ?>
+        <?php if($result === "Empty") : ?>
         <script>
             Swal.fire(
                 'Warning!',
@@ -71,7 +71,7 @@
             let timerInterval
             Swal.fire({
                 title: 'Success!',
-                html: '<b>You Will Be Redirected!</b>',
+                html: 'You Will Be Redirected!',
                 icon: 'success',
                 allowOutsideClick: false,
                 timer: 2000,

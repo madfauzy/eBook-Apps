@@ -123,7 +123,7 @@
         $confirmPassword = mysqli_real_escape_string($conn,$user["confirmPassword"]);
 
         if(empty(trim($username)) || empty(trim($password))){
-            return "isEmpty";
+            return "Empty";
         }
 
         $result = query("SELECT username FROM users WHERE username = '$username'");
