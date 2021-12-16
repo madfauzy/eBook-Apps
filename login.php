@@ -1,6 +1,16 @@
 <?php 
-    session_start();
     require "functions.php";
+
+    if(isset($_COOKIE["user_id"]) && isset($_COOKIE["user_key"])){
+        $user_id = $_COOKIE["user_id"];
+        $user_key = $_COOKIE["user_key"];
+
+        $users = query("SELECT * FROM users WHERE id = $user_id")[0];
+
+        if($user_key === hash("sha256",$users["username"])){
+            $_SESSION["username"] = $users["username"];
+        }
+    }
 
     if(isset($_SESSION["username"])){
         header("Location: index.php");
@@ -8,6 +18,12 @@
 
     if(isset($_POST["login"])){
         $result = userLogin($_POST);
+        
+        if($result === "Success"){
+            header("Location: index.php");
+        }else{
+            $alert = true;
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -31,18 +47,11 @@
         <form action="" method="post">
             <img class="logo mb-3" src="assets/img/logo_ebook.png" alt="Logo eBook">
             <h1 class="h3 mb-3">Login to eBook Apps</h1>
-            <?php if(isset($result)) : ?>
-                <?php 
-                    if($result === "Success") : 
-                        $_SESSION["username"] = $_POST["username"];
-                        header("Location: index.php");
-                ?>
-                <?php else : ?>
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    Incorrect username or password!
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                <?php endif; ?>
+            <?php if(isset($alert)) : ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                Incorrect username or password!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
             <?php endif; ?>
             <div class="form-floating">
                 <input class="form-control" type="text" id="username" name="username" placeholder="Username" maxlength="20" autocomplete="off" required autofocus>

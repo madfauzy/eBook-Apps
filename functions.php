@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     $conn = mysqli_connect("localhost","root","","ebookapps");
 
     function query($query){
@@ -118,7 +119,7 @@
 
     function userSignUp($user){
         global $conn;
-        $username = str_replace(' ', '',strtolower(stripslashes($user["username"])));
+        $username = str_replace(' ','',strtolower(stripslashes($user["username"])));
         $password = mysqli_real_escape_string($conn,$user["password"]);
         $confirmPassword = mysqli_real_escape_string($conn,$user["confirmPassword"]);
 
@@ -126,9 +127,9 @@
             return "Empty";
         }
 
-        $result = query("SELECT username FROM users WHERE username = '$username'");
+        $users = query("SELECT username FROM users WHERE username = '$username'");
 
-        if(!empty($result)){
+        if(!empty($users)){
             return "UsernameAlreadyExist";
         }
 
@@ -147,15 +148,22 @@
         global $conn;
         $username = mysqli_real_escape_string($conn,$user["username"]);
         $password = mysqli_real_escape_string($conn,$user["password"]);
-        $result = query("SELECT * FROM users WHERE username = '$username'");
+        $users = query("SELECT * FROM users WHERE username = '$username'");
 
-        if(empty($result)){
+        if(empty($users)){
             return false;
+        }else{
+            $users = $users[0];
         }
 
-        $passwordHash = $result[0]["password"];
+        if(password_verify($password,$users["password"])){
+            $_SESSION["username"] = $username;
 
-        if(password_verify($password,$passwordHash)){
+            if(isset($_POST["remember"])){
+                setcookie("user_id",$users["id"],time() + (86400 * 30));
+                setcookie("user_key",hash("sha256",$username),time() + (86400 * 30));
+            }
+
             return "Success";
         }
 

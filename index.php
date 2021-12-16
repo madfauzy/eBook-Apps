@@ -1,11 +1,9 @@
-<?php 
-    session_start();
+<?php
+    require "functions.php"; 
 
     if(!isset($_SESSION["username"])){
         header("Location: login.php");
     }
-
-    require "functions.php";
 
     $ebooks = query("SELECT * FROM ebooks");
 
