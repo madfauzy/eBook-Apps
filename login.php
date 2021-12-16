@@ -1,11 +1,14 @@
 <?php 
     session_start();
-    
+    require "functions.php";
+
     if(isset($_SESSION["username"])){
         header("Location: index.php");
     }
 
-    require "functions.php";
+    if(isset($_POST["login"])){
+        $result = userLogin($_POST);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,6 +31,19 @@
         <form action="" method="post">
             <img class="logo mb-3" src="assets/img/logo_ebook.png" alt="Logo eBook">
             <h1 class="h3 mb-3">Login to eBook Apps</h1>
+            <?php if(isset($result)) : ?>
+                <?php 
+                    if($result === "Success") : 
+                        $_SESSION["username"] = $_POST["username"];
+                        header("Location: index.php");
+                ?>
+                <?php else : ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    Incorrect username or password!
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <?php endif; ?>
+            <?php endif; ?>
             <div class="form-floating">
                 <input class="form-control" type="text" id="username" name="username" placeholder="Username" maxlength="20" autocomplete="off" required autofocus>
                 <label for="username">Username</label>
@@ -36,30 +52,17 @@
                 <input class="form-control" type="password" id="password" name="password" placeholder="Password" autocomplete="off" required>
                 <label for="password">Password</label>
             </div>
-            <button class="w-100 btn btn-lg btn-warning mt-3" type="submit" name="login">Login</button>
+            <div class="checkbox my-3">
+                <label>
+                    <input type="checkbox" name="remember"> Remember me
+                </label>
+            </div>
+            <button class="w-100 btn btn-lg btn-warning" type="submit" name="login">Login</button>
             <p class="my-3">Not a member yet? <a class="link-danger text-decoration-none fw-bold" href="signup.php">Sign Up</a></p>
             <p class="mt-5 mb-3 text-muted">&copy; 2021 Copyright <a class="link-warning text-decoration-none fw-bold" href="https://github.com/madfauzy" target="_blank">Ahmad Fauzy</a></p>
         </form>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <?php if(isset($_POST["login"])) : ?>
-        <?php $result = userLogin($_POST) ?>
-        <?php 
-            if($result === "Success") :
-                $_SESSION["username"] = $_POST["username"];
-                header("Location: index.php");
-        ?>
-        <?php else : ?>
-        <script>
-            Swal.fire(
-                'Warning!',
-                'Incorrect username or password!',
-                'warning'
-            );
-        </script>
-        <?php endif; ?>
-    <?php endif; ?>
 </body>
 </html>

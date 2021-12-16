@@ -1,4 +1,10 @@
-<?php require "functions.php" ?>
+<?php 
+    require "functions.php";
+    
+    if(isset($_POST["signup"])){
+        $result = userSignUp($_POST);
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +26,31 @@
         <form action="" method="post">
             <img class="logo mb-3" src="assets/img/logo_ebook.png" alt="Logo eBook">
             <h1 class="h3 mb-3">Please Sign Up</h1>
+            <?php if(isset($result)) : ?>
+                <?php if($result === "Empty") : ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    Invalid username or password!
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <?php elseif($result === "UsernameAlreadyExist") : ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    Username already exist!
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <?php elseif($result === "WrongPassword") : ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    Incorrect confirm password!
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <?php elseif($result > 0) : ?>
+                <?php $success = true; ?>
+                <?php else : ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    Failed to sign up. Try again!
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <?php endif; ?>
+            <?php endif; ?>
             <div class="form-floating">
                 <input class="form-control" type="text" id="username" name="username" placeholder="Username" maxlength="20" autocomplete="off" required autofocus>
                 <label for="username">Username</label>
@@ -40,63 +71,28 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <?php if(isset($_POST["signup"])) : ?>
-        <?php $result = userSignUp($_POST) ?>
-        <?php if($result === "Empty") : ?>
-        <script>
-            Swal.fire(
-                'Warning!',
-                'Username and Password cannot be empty!',
-                'warning'
-            );
-        </script>
-        <?php elseif($result === "UsernameAlreadyExist") : ?>
-        <script>
-            Swal.fire(
-                'Warning!',
-                'Username already exist!',
-                'warning'
-            );
-        </script>
-        <?php elseif($result === "WrongPassword") : ?>
-        <script>
-            Swal.fire(
-                'Warning!',
-                'Incorrect password confirmation!',
-                'warning'
-            );
-        </script>
-        <?php elseif($result > 0) : ?>
-        <script>
-            let timerInterval
-            Swal.fire({
-                title: 'Success!',
-                html: 'You Will Be Redirected!',
-                icon: 'success',
-                allowOutsideClick: false,
-                timer: 2000,
-                timerProgressBar: true,
-                didOpen: () => {
-                    Swal.showLoading()
-                },
-                willClose: () => {
-                    clearInterval(timerInterval)
-                }
-            }).then((result) => {
-                if (result.dismiss === Swal.DismissReason.timer) {
-                    window.location.href = 'login.php';
-                }
-            });
-        </script>
-        <?php else : ?>
-        <script>
-            Swal.fire(
-                'Error!',
-                'Failed to sign up. Try again!',
-                'error'
-            );
-        </script>
-        <?php endif; ?>
+    <?php if(isset($success)) : ?>
+    <script>
+        let timerInterval
+        Swal.fire({
+            title: 'Success!',
+            html: 'You Will Be Redirected!',
+            icon: 'success',
+            allowOutsideClick: false,
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: () => {
+                Swal.showLoading()
+            },
+            willClose: () => {
+                clearInterval(timerInterval)
+            }
+        }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.timer) {
+                window.location.href = 'login.php';
+            }
+        });
+    </script>
     <?php endif; ?>
 </body>
 </html>
