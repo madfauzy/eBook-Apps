@@ -5,7 +5,13 @@
         header("Location: login.php");
     }
 
-    $ebooks = query("SELECT * FROM ebooks");
+    $ebookPerPage = 10;
+    $totalEbook = count(query("SELECT * FROM ebooks"));
+    $totalPage = ceil($totalEbook / $ebookPerPage);
+    $activePage = isset($_GET["page"]) ? $_GET["page"] : 1;
+    $index = $ebookPerPage * $activePage - $ebookPerPage;
+
+    $ebooks = query("SELECT * FROM ebooks LIMIT $index,$ebookPerPage");
 
     if(isset($_POST["search"])){
         $ebooks = searchEbook($_POST["keyword"]);
@@ -109,6 +115,40 @@
                 </div>
             </div>
         <?php endif; ?>
+
+        <nav class="my-4" aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                <?php if($activePage > 1) : ?>
+                <li class="page-item">
+                    <a class="page-link" href="?page=<?= $activePage - 1 ?>">Previous</a>
+                </li>
+                <?php else : ?>
+                <li class="page-item disabled">
+                    <a class="page-link" href="?page=<?= $activePage - 1 ?>">Previous</a>
+                </li>
+                <?php endif; ?>
+                <?php for($i = 1; $i <= $totalPage; $i++) : ?>
+                    <?php if($i == $activePage) : ?>
+                    <li class="page-item active" aria-current="page">
+                        <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+                    </li>
+                    <?php else : ?>
+                    <li class="page-item">
+                        <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+                    </li>
+                    <?php endif; ?>
+                <?php endfor; ?>
+                <?php if($activePage < $totalPage) : ?>
+                <li class="page-item">
+                    <a class="page-link" href="?page=<?= $activePage + 1 ?>">Next</a>
+                </li>
+                <?php else : ?>
+                <li class="page-item disabled">
+                    <a class="page-link" href="?page=<?= $activePage - 1 ?>">Next</a>
+                </li>
+                <?php endif; ?>
+            </ul>
+        </nav>
     </main>
 
     <footer>
@@ -117,7 +157,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="assets/js/script.js"></script>
     <?php if(isset($_GET["delete"])) : ?>
         <?php if($_GET["delete"] === "success") : ?>
