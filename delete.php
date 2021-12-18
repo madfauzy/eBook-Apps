@@ -1,11 +1,9 @@
 <?php 
-    session_start();
-        
+    require "functions.php";
+
     if(!isset($_SESSION["username"])){
         header("Location: login.php");
     }
-    
-    require "functions.php";
 
     if(deleteEbook($_GET) > 0){
         header("Location: index.php?delete=success");
