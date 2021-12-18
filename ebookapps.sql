@@ -41,9 +41,19 @@ CREATE TABLE `ebooks` (
 --
 
 INSERT INTO `ebooks` (`id`, `title`, `author`, `category`, `price`, `cover`) VALUES
-(1, 'Tutorial Laravel', 'Tutorialspoint', 'Programming Languages', 'Paid', 'tutorial_laravel.jpg'),
-(2, 'Tutorial C++', 'Tutorialspoint', 'Programming Languages', 'Paid', 'tutorial_c++.jpg'),
-(3, 'Tutorial CSS', 'Tutorialspoint', 'Programming Languages', 'Free', 'tutorial_css.jpg');
+(1, 'C++ Tutorial', 'Tutorialspoint', 'Programming Languages', 'Paid', 'IMG_4fe263c4f5e6de0c50a1613628ab3ff6.jpg'),
+(2, 'Laravel Tutorial', 'Tutorialspoint', 'Programming Languages', 'Paid', 'IMG_99be0b8f93fb080bee9fdd64c47f6317.jpg'),
+(3, 'CSS Tutorial', 'Tutorialspoint', 'Programming Languages', 'Paid', 'IMG_7af5bb267f368dda20be42ec73250ee5.jpg'),
+(4, 'Learning Go Programming', 'Shubhangi Agarwal', 'Programming Languages', 'Paid', 'IMG_024c8602bb9d2799e256b1e672b198fd.jpg'),
+(5, 'Object Oriented Programming with Angular', 'Balram Morsing Chavan', 'Programming Languages', 'Paid', 'IMG_fffdfb2c87576a0bdad00725ad8529c8.jpg'),
+(6, 'JAVA8 Tutorial', 'Tutorialspoint', 'Programming Languages', 'Paid', 'IMG_fd1477dff59ed4f8744928ae5ac71793.jpg'),
+(7, 'Python Tutorial', 'Tutorialspoint', 'Programming Languages', 'Paid', 'IMG_3b27e77f6875dd86bf72c5ca052a10cf.jpg'),
+(8, 'Dart Programming Tutorial', 'Tutorialspoint', 'Programming Languages', 'Paid', 'IMG_1b0f510928a162c83aa4f7f546cf6f26.jpg'),
+(9, 'Kali Linux Tutorial', 'Tutorialspoint', 'IT &amp; Software', 'Paid', 'IMG_4a0e4eb91f8f180be897ea535c12b820.jpg'),
+(10, 'Fundamentals of Information Security', 'Sanil Nadkarni', 'IT &amp; Software', 'Paid', 'IMG_8237dc3b77c87165d721fe5195b766e8.jpg'),
+(11, 'Arduino Tutorial', 'Tutorialspoint', 'IT &amp; Software', 'Paid', 'IMG_6da2f64d88207836cec3a644d83d10ba.jpg'),
+(12, 'Operating System Tutorial', 'Tutorialspoint', 'IT &amp; Software', 'Paid', 'IMG_94be509757316ce59ccf6e207ae10bba.jpg'),
+(13, 'Docker Tutorial', 'Tutorialspoint', 'IT &amp; Software', 'Paid', 'IMG_61b64030d4d76e049acfb1520d7ed427.jpg');
 
 -- --------------------------------------------------------
 
@@ -90,7 +100,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `ebooks`
 --
 ALTER TABLE `ebooks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
