@@ -5,16 +5,19 @@
         header("Location: login.php");
     }
 
-    $ebookPerPage = 10;
+    $ebookPerPage = 5;
     $totalEbook = count(query("SELECT * FROM ebooks"));
     $totalPage = ceil($totalEbook / $ebookPerPage);
     $activePage = isset($_GET["page"]) ? $_GET["page"] : 1;
     $index = $ebookPerPage * $activePage - $ebookPerPage;
 
-    $ebooks = query("SELECT * FROM ebooks LIMIT $index,$ebookPerPage");
-
-    if(isset($_POST["search"])){
-        $ebooks = searchEbook($_POST["keyword"]);
+    if(isset($_GET["search"]) || isset($_GET["keyword"])){
+        $keyword = $_GET["keyword"];
+        $ebooks = searchEbook($keyword);
+        $totalPage = ceil(count($ebooks) / $ebookPerPage);
+        $ebooks = searchEbook($keyword,$index,$ebookPerPage);
+    }else{
+        $ebooks = query("SELECT * FROM ebooks LIMIT $index,$ebookPerPage");
     }
 
     $totalEbook = count($ebooks);
@@ -56,8 +59,8 @@
                         <a class="nav-link" href="create.php">Add eBook</a>
                     </li>
                 </ul>
-                <form class="d-flex" action="" method="post">
-                    <input class="form-control me-2" aria-label="Search" type="search" name="keyword" placeholder="Search eBooks" autocomplete="off" autofocus>
+                <form class="d-flex" action="" method="get">
+                    <input class="form-control me-2" aria-label="Search" type="search" name="keyword" placeholder="Search eBooks" autocomplete="off" value="<?php if(isset($keyword)) echo $keyword ?>" autofocus>
                     <button class="btn btn-warning" type="submit" name="search">Search</button>
                 </form>
                 <a class="btn btn-danger mx-2 my-lg-0 my-2 fw-bold" href="logout.php">Logout</a>
@@ -118,35 +121,17 @@
 
         <nav class="my-4" aria-label="Page navigation">
             <ul class="pagination justify-content-center">
-                <?php if($activePage > 1) : ?>
-                <li class="page-item">
-                    <a class="page-link" href="?page=<?= $activePage - 1 ?>">Previous</a>
+                <li class="page-item <?php if($activePage <= 1) echo "disabled" ?>">
+                    <a class="page-link" href="?page=<?= $activePage - 1 ?><?php if(isset($keyword)) echo "&keyword=$keyword" ?>">Previous</a>
                 </li>
-                <?php else : ?>
-                <li class="page-item disabled">
-                    <a class="page-link" href="?page=<?= $activePage - 1 ?>">Previous</a>
-                </li>
-                <?php endif; ?>
                 <?php for($i = 1; $i <= $totalPage; $i++) : ?>
-                    <?php if($i == $activePage) : ?>
-                    <li class="page-item active" aria-current="page">
-                        <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+                    <li class="page-item <?php if($i == $activePage) echo "active" ?>" aria-current="page">
+                        <a class="page-link" href="?page=<?= $i ?><?php if(isset($keyword)) echo "&keyword=$keyword" ?>"><?= $i ?></a>
                     </li>
-                    <?php else : ?>
-                    <li class="page-item">
-                        <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
-                    </li>
-                    <?php endif; ?>
                 <?php endfor; ?>
-                <?php if($activePage < $totalPage) : ?>
-                <li class="page-item">
-                    <a class="page-link" href="?page=<?= $activePage + 1 ?>">Next</a>
+                <li class="page-item <?php if($activePage >= $totalPage) echo "disabled" ?>">
+                    <a class="page-link" href="?page=<?= $activePage + 1 ?><?php if(isset($keyword)) echo "&keyword=$keyword" ?>">Next</a>
                 </li>
-                <?php else : ?>
-                <li class="page-item disabled">
-                    <a class="page-link" href="?page=<?= $activePage - 1 ?>">Next</a>
-                </li>
-                <?php endif; ?>
             </ul>
         </nav>
     </main>
