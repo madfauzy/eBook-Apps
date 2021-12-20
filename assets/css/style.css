@@ -15,7 +15,7 @@ body {
 }
 
 .not-found {
-    min-height: 378px;
+    min-height: 390px;
 }
 
 .bi-search {
@@ -23,11 +23,11 @@ body {
 }
 
 .full-height {
-    min-height: 394px;
+    min-height: 406px;
 }
 
 @media screen and (max-width: 576px) {
     .not-found {
-        min-height: 480px;
+        min-height: 450px;
     }
 }

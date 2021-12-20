@@ -33,7 +33,7 @@ CREATE TABLE `ebooks` (
   `author` varchar(100) NOT NULL,
   `category` varchar(100) NOT NULL,
   `price` char(4) NOT NULL,
-  `cover` char(40) NOT NULL
+  `cover` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
