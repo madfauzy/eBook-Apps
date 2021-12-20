@@ -80,7 +80,7 @@
         return mysqli_affected_rows($conn);
     }
 
-    function searchEbook($keyword,$index = NULL,$ebookPerPage = NULL){
+    function searchEbook($keyword,$index = null,$ebookPerPage = null){
         if(isset($index) && isset($ebookPerPage)){
             return query("SELECT * FROM ebooks WHERE title LIKE '%$keyword%' OR author LIKE '%$keyword%' OR category LIKE '%$keyword%' OR price LIKE '%$keyword%' LIMIT $index,$ebookPerPage");
         }

@@ -1,4 +1,7 @@
 const deleteEbook = document.querySelector(".delete-ebook");
+const keyword = document.getElementById("keyword");
+const listEbook = document.querySelector("main");
+
 deleteEbook.addEventListener('click',function(){
     Swal.fire({
         title: 'Are you sure?',
@@ -14,4 +17,17 @@ deleteEbook.addEventListener('click',function(){
         }
     })
     return false;
+});
+
+keyword.addEventListener("keyup",function(){
+    const xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4 && xhr.status == 200){
+            listEbook.innerHTML = xhr.responseText;
+        }
+    }
+
+    xhr.open("GET","assets/ajax/ebooks.php?keyword=" + keyword.value,true);
+    xhr.send();
 });

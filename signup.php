@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/sign.css">
-    <link rel="icon" href="assets/img/logo_ebook.png">
+    <link rel="icon" href="assets/img/icon_ebook.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -24,7 +24,7 @@
 <body>
     <div class="form-sign text-center">
         <form action="" method="post">
-            <img class="logo mb-3" src="assets/img/logo_ebook.png" alt="Logo eBook">
+            <img class="icon mb-3" src="assets/img/icon_ebook.png" alt="Icon eBook">
             <h1 class="h3 mb-3">Please Sign Up</h1>
             <?php if(isset($result)) : ?>
                 <?php if($result === "Empty") : ?>

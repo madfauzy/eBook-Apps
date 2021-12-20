@@ -5,19 +5,18 @@
         header("Location: login.php");
     }
 
-    $ebookPerPage = 5;
+    $ebookPerPage = 10;
     $totalEbook = count(query("SELECT * FROM ebooks"));
     $totalPage = ceil($totalEbook / $ebookPerPage);
     $activePage = isset($_GET["page"]) ? $_GET["page"] : 1;
     $index = $ebookPerPage * $activePage - $ebookPerPage;
+    $ebooks = query("SELECT * FROM ebooks LIMIT $index,$ebookPerPage");
 
-    if(isset($_GET["search"]) || isset($_GET["keyword"])){
+    if(isset($_GET["keyword"])){
         $keyword = $_GET["keyword"];
-        $ebooks = searchEbook($keyword);
-        $totalPage = ceil(count($ebooks) / $ebookPerPage);
+        $totalEbook = searchEbook($keyword);
+        $totalPage = ceil(count($totalEbook) / $ebookPerPage);
         $ebooks = searchEbook($keyword,$index,$ebookPerPage);
-    }else{
-        $ebooks = query("SELECT * FROM ebooks LIMIT $index,$ebookPerPage");
     }
 
     $totalEbook = count($ebooks);
@@ -31,7 +30,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="icon" href="assets/img/logo_ebook.png">
+    <link rel="icon" href="assets/img/icon_ebook.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -41,7 +40,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.php">
-                <img class="me-1" src="assets/img/logo_ebook.png" alt="Logo eBook"> eBook Apps
+                <img class="me-1" src="assets/img/icon_ebook.png" alt="Icon eBook"> eBook Apps
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -60,10 +59,9 @@
                     </li>
                 </ul>
                 <form class="d-flex" action="" method="get">
-                    <input class="form-control me-2" aria-label="Search" type="search" name="keyword" placeholder="Search eBooks" autocomplete="off" value="<?php if(isset($keyword)) echo $keyword ?>" autofocus>
-                    <button class="btn btn-warning" type="submit" name="search">Search</button>
+                    <input class="form-control me-2" id="keyword" aria-label="Search" type="search" name="keyword" placeholder="Search eBooks" autocomplete="off" value="<?php if(isset($keyword)) echo $keyword ?>" autofocus>
                 </form>
-                <a class="btn btn-danger mx-2 my-lg-0 my-2 fw-bold" href="logout.php">Logout</a>
+                <a class="btn btn-warning mx-lg-2 my-lg-0 mt-3 mb-2 fw-bold" href="logout.php">Logout</a>
             </div>
         </div>
     </nav>
@@ -76,11 +74,7 @@
             <h2 class="my-4">Oops couldn't find any ebooks!</h2>
         </div>
         <?php else: ?>
-            <?php if($totalEbook === 1 || $totalEbook === 2) : ?>
-            <div class="list-ebook full-height">
-            <?php else: ?>
-            <div class="list-ebook">
-            <?php endif; ?>
+            <div class="list-ebook <?php if($totalEbook === 1 || $totalEbook === 2) echo "full-height" ?>">
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-2 g-xl-3 g-2">
                     <?php foreach($ebooks as $ebook) : ?>
                     <div class="col">
@@ -119,13 +113,14 @@
             </div>
         <?php endif; ?>
 
+        <?php if($totalEbook > 0) : ?>
         <nav class="my-4" aria-label="Page navigation">
             <ul class="pagination justify-content-center">
                 <li class="page-item <?php if($activePage <= 1) echo "disabled" ?>">
                     <a class="page-link" href="?page=<?= $activePage - 1 ?><?php if(isset($keyword)) echo "&keyword=$keyword" ?>">Previous</a>
                 </li>
                 <?php for($i = 1; $i <= $totalPage; $i++) : ?>
-                    <li class="page-item <?php if($i == $activePage) echo "active" ?>" aria-current="page">
+                    <li class="page-item <?php if($i == $activePage) echo "active" ?>">
                         <a class="page-link" href="?page=<?= $i ?><?php if(isset($keyword)) echo "&keyword=$keyword" ?>"><?= $i ?></a>
                     </li>
                 <?php endfor; ?>
@@ -134,10 +129,14 @@
                 </li>
             </ul>
         </nav>
+        <?php endif; ?>
     </main>
 
-    <footer>
-        <div class="text-center text-light p-4 bg-dark">&copy; 2021 Copyright <a class="link-warning text-decoration-none fw-bold" href="https://github.com/madfauzy" target="_blank">Ahmad Fauzy</a>. All Rights Reserved.</div>
+    <footer class="bg-dark text-light p-4">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div>&copy; 2021 Copyright <a class="link-warning text-decoration-none fw-bold" href="https://github.com/madfauzy" target="_blank">Ahmad Fauzy</a>. All Rights Reserved.</div>
+            <div>Icon made by <a class="link-warning text-decoration-none fw-bold" href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank">Freepik</a> from <a class="link-warning text-decoration-none fw-bold" href="https://www.flaticon.com/" title="Flaticon" target="_blank">www.flaticon.com</a></div>
+        </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
