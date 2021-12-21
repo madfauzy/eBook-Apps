@@ -13,12 +13,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/sign.css">
-    <link rel="icon" href="assets/img/icon_ebook.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/sign.css">
+    <link rel="icon" href="assets/img/icon_ebook.png">
     <title>Sign Up - eBook Apps</title>
 </head>
 <body>
@@ -35,6 +35,11 @@
                 <?php elseif($result === "UsernameAlreadyExist") : ?>
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     Username already exist!
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <?php elseif($result === "InvalidPassword") : ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    Password must be at least 8 characters long!
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 <?php elseif($result === "WrongPassword") : ?>
@@ -56,7 +61,7 @@
                 <label for="username">Username</label>
             </div>
             <div class="form-floating">
-                <input class="form-control" type="password" id="password" name="password" placeholder="Password" autocomplete="off" required>
+                <input class="form-control" type="password" id="password" name="password" placeholder="Password" autocomplete="off" required data-bs-toggle="tooltip" data-bs-placement="right" title="Password must be at least 8 characters long">
                 <label for="password">Password</label>
             </div>
             <div class="form-floating">
@@ -71,6 +76,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.0/dist/sweetalert2.all.min.js" integrity="sha256-nk6ExuG7ckFYKC1p3efjdB14TU+pnGwTra1Fnm6FvZ0=" crossorigin="anonymous"></script>
+    <script src="assets/js/sign.js"></script>
     <?php if(isset($success)) : ?>
     <script>
         let timerInterval

@@ -81,7 +81,7 @@
     }
 
     function searchEbook($keyword,$index = null,$ebookPerPage = null){
-        if(isset($index) && isset($ebookPerPage)){
+        if(isset($index,$ebookPerPage)){
             return query("SELECT * FROM ebooks WHERE title LIKE '%$keyword%' OR author LIKE '%$keyword%' OR category LIKE '%$keyword%' OR price LIKE '%$keyword%' LIMIT $index,$ebookPerPage");
         }
 
@@ -123,7 +123,7 @@
 
     function userSignUp($user){
         global $conn;
-        $username = str_replace(' ','',strtolower(stripslashes($user["username"])));
+        $username = str_replace(" ","",strtolower(stripslashes($user["username"])));
         $password = mysqli_real_escape_string($conn,$user["password"]);
         $confirmPassword = mysqli_real_escape_string($conn,$user["confirmPassword"]);
 
@@ -135,6 +135,10 @@
 
         if(!empty($users)){
             return "UsernameAlreadyExist";
+        }
+
+        if(!preg_match("/^.{8,}$/",$password)){
+            return "InvalidPassword";
         }
 
         if($password !== $confirmPassword){
