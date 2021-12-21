@@ -25,7 +25,7 @@
     <title>Update eBook - eBook Apps</title>
 </head>
 <body class="bg-light">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" aria-label="Navigation">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.php">
                 <img class="me-1" src="assets/img/icon_ebook.png" alt="Icon eBook"> eBook Apps
@@ -81,25 +81,25 @@
                     <div class="mb-3">
                         <label class="form-label" for="category">Category</label>
                         <select class="form-select" aria-label="category" id="category" name="category">
-                            <option <?php if($ebooks["category"] === "Artificial Intelligence") echo "selected" ?> value="Artificial Intelligence">Artificial Intelligence</option>
-                            <option <?php if($ebooks["category"] === "Cyber Security") echo "selected" ?> value="Cyber Security">Cyber Security</option>
-                            <option <?php if($ebooks["category"] === "Data Science") echo "selected" ?> value="Data Science">Data Science</option>
-                            <option <?php if($ebooks["category"] === "Design") echo "selected" ?> value="Design">Design</option>
-                            <option <?php if($ebooks["category"] === "Development") echo "selected" ?> value="Development">Development</option>
-                            <option <?php if($ebooks["category"] === "IT & Software") echo "selected" ?> value="IT & Software">IT & Software</option>
-                            <option <?php if($ebooks["category"] === "Machine Learning") echo "selected" ?> value="Machine Learning">Machine Learning</option>
-                            <option <?php if($ebooks["category"] === "Programming Languages") echo "selected" ?> value="Programming Languages">Programming Languages</option>
-                            <option <?php if($ebooks["category"] === "Others") echo "selected" ?> value="Others">Others</option>
+                            <option <?php if($ebooks["category"] === "Artificial Intelligence"){echo "selected";}?> value="Artificial Intelligence">Artificial Intelligence</option>
+                            <option <?php if($ebooks["category"] === "Cyber Security"){echo "selected";}?> value="Cyber Security">Cyber Security</option>
+                            <option <?php if($ebooks["category"] === "Data Science"){echo "selected";}?> value="Data Science">Data Science</option>
+                            <option <?php if($ebooks["category"] === "Design"){echo "selected";}?> value="Design">Design</option>
+                            <option <?php if($ebooks["category"] === "Development"){echo "selected";}?> value="Development">Development</option>
+                            <option <?php if($ebooks["category"] === "IT & Software"){echo "selected";}?> value="IT & Software">IT & Software</option>
+                            <option <?php if($ebooks["category"] === "Machine Learning"){echo "selected";}?> value="Machine Learning">Machine Learning</option>
+                            <option <?php if($ebooks["category"] === "Programming Languages"){echo "selected";}?> value="Programming Languages">Programming Languages</option>
+                            <option <?php if($ebooks["category"] === "Others"){echo "selected";}?> value="Others">Others</option>
                         </select>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Price</label><br>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="price" id="free" <?php if($ebooks["price"] === "Free") echo "checked" ?> value="Free">
+                            <input class="form-check-input" type="radio" name="price" id="free" <?php if($ebooks["price"] === "Free"){echo "checked";}?> value="Free">
                             <label class="form-check-label" for="free">Free</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="price" id="paid" <?php if($ebooks["price"] === "Paid") echo "checked" ?> value="Paid">
+                            <input class="form-check-input" type="radio" name="price" id="paid" <?php if($ebooks["price"] === "Paid"){echo "checked";}?> value="Paid">
                             <label class="form-check-label" for="paid">Paid</label>
                         </div>
                     </div>
@@ -118,13 +118,13 @@
 
     <footer class="bg-dark text-light p-4">
         <div class="container d-flex justify-content-between align-items-center">
-            <div>&copy; 2021 Copyright <a class="link-warning text-decoration-none fw-bold" href="https://github.com/madfauzy" target="_blank">Ahmad Fauzy</a>. All Rights Reserved.</div>
-            <div>Icon made by <a class="link-warning text-decoration-none fw-bold" href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank">Freepik</a> from <a class="link-warning text-decoration-none fw-bold" href="https://www.flaticon.com/" title="Flaticon" target="_blank">www.flaticon.com</a></div>
+            <div>&copy; 2021 Copyright <a class="link-warning text-decoration-none fw-bold" href="https://github.com/madfauzy" target="_blank" rel="noopener">Ahmad Fauzy</a>. All Rights Reserved.</div>
+            <div>Icon made by <a class="link-warning text-decoration-none fw-bold" href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank" rel="noopener">Freepik</a> from <a class="link-warning text-decoration-none fw-bold" href="https://www.flaticon.com/" title="Flaticon" target="_blank" rel="noopener">www.flaticon.com</a></div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.0/dist/sweetalert2.all.min.js" integrity="sha256-nk6ExuG7ckFYKC1p3efjdB14TU+pnGwTra1Fnm6FvZ0=" crossorigin="anonymous"></script>
     <?php if(isset($_POST["submit"])) : ?>
         <?php $result = updateEbook($_POST) ?>
         <?php if($result === "InvalidExtension") : ?>

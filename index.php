@@ -13,7 +13,7 @@
     $ebooks = query("SELECT * FROM ebooks LIMIT $index,$ebookPerPage");
 
     if(isset($_GET["keyword"])){
-        $keyword = $_GET["keyword"];
+        $keyword = htmlspecialchars($_GET["keyword"]);
         $totalEbook = searchEbook($keyword);
         $totalPage = ceil(count($totalEbook) / $ebookPerPage);
         $ebooks = searchEbook($keyword,$index,$ebookPerPage);
@@ -37,7 +37,7 @@
     <title>Home - eBook Apps</title>
 </head>
 <body class="bg-light">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" aria-label="Navigation">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.php">
                 <img class="me-1" src="assets/img/icon_ebook.png" alt="Icon eBook"> eBook Apps
@@ -59,7 +59,7 @@
                     </li>
                 </ul>
                 <form class="d-flex" action="" method="get">
-                    <input class="form-control me-2" id="keyword" aria-label="Search" type="search" name="keyword" placeholder="Search eBooks" autocomplete="off" value="<?php if(isset($keyword)) echo $keyword ?>" autofocus>
+                    <input class="form-control me-2" id="keyword" aria-label="Search" type="search" name="keyword" placeholder="Search eBooks" autocomplete="off" value="<?php if(isset($keyword)){echo $keyword;}?>" autofocus>
                 </form>
                 <a class="btn btn-warning mx-lg-2 my-lg-0 mt-3 mb-2 fw-bold" href="logout.php">Logout</a>
             </div>
@@ -70,11 +70,11 @@
         <h1 class="h3 mb-4">Total Ebooks: <?= $totalEbook ?></h1>
         <?php if($totalEbook === 0) : ?>
         <div class="not-found d-flex flex-column align-items-center justify-content-center">
-            <i class="bi bi-search"></i>
+            <i class="bi bi-search" aria-hidden="true"></i>
             <h2 class="my-4">Oops couldn't find any ebooks!</h2>
         </div>
         <?php else: ?>
-            <div class="list-ebook <?php if($totalEbook === 1 || $totalEbook === 2) echo "full-height" ?>">
+            <div class="list-ebook <?php if($totalEbook === 1 || $totalEbook === 2){echo "full-height";}?>">
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-2 g-xl-3 g-2">
                     <?php foreach($ebooks as $ebook) : ?>
                     <div class="col">
@@ -116,16 +116,16 @@
         <?php if($totalEbook > 0) : ?>
         <nav class="my-4" aria-label="Page navigation">
             <ul class="pagination justify-content-center">
-                <li class="page-item <?php if($activePage <= 1) echo "disabled" ?>">
-                    <a class="page-link" href="?page=<?= $activePage - 1 ?><?php if(isset($keyword)) echo "&keyword=$keyword" ?>">Previous</a>
+                <li class="page-item <?php if($activePage <= 1){echo "disabled";}?>">
+                    <a class="page-link" href="?page=<?= $activePage - 1 ?><?php if(isset($keyword)){echo "&keyword=$keyword";}?>">Previous</a>
                 </li>
                 <?php for($i = 1; $i <= $totalPage; $i++) : ?>
-                    <li class="page-item <?php if($i == $activePage) echo "active" ?>">
-                        <a class="page-link" href="?page=<?= $i ?><?php if(isset($keyword)) echo "&keyword=$keyword" ?>"><?= $i ?></a>
+                    <li class="page-item <?php if($i == $activePage){echo "active";}?>">
+                        <a class="page-link" href="?page=<?= $i ?><?php if(isset($keyword)){echo "&keyword=$keyword";}?>"><?= $i ?></a>
                     </li>
                 <?php endfor; ?>
-                <li class="page-item <?php if($activePage >= $totalPage) echo "disabled" ?>">
-                    <a class="page-link" href="?page=<?= $activePage + 1 ?><?php if(isset($keyword)) echo "&keyword=$keyword" ?>">Next</a>
+                <li class="page-item <?php if($activePage >= $totalPage){echo "disabled";}?>">
+                    <a class="page-link" href="?page=<?= $activePage + 1 ?><?php if(isset($keyword)){echo "&keyword=$keyword";}?>">Next</a>
                 </li>
             </ul>
         </nav>
@@ -134,14 +134,14 @@
 
     <footer class="bg-dark text-light p-4">
         <div class="container d-flex justify-content-between align-items-center">
-            <div>&copy; 2021 Copyright <a class="link-warning text-decoration-none fw-bold" href="https://github.com/madfauzy" target="_blank">Ahmad Fauzy</a>. All Rights Reserved.</div>
-            <div>Icon made by <a class="link-warning text-decoration-none fw-bold" href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank">Freepik</a> from <a class="link-warning text-decoration-none fw-bold" href="https://www.flaticon.com/" title="Flaticon" target="_blank">www.flaticon.com</a></div>
+            <div>&copy; 2021 Copyright <a class="link-warning text-decoration-none fw-bold" href="https://github.com/madfauzy" target="_blank" rel="noopener">Ahmad Fauzy</a>. All Rights Reserved.</div>
+            <div>Icon made by <a class="link-warning text-decoration-none fw-bold" href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank" rel="noopener">Freepik</a> from <a class="link-warning text-decoration-none fw-bold" href="https://www.flaticon.com/" title="Flaticon" target="_blank" rel="noopener">www.flaticon.com</a></div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.0/dist/sweetalert2.all.min.js" integrity="sha256-nk6ExuG7ckFYKC1p3efjdB14TU+pnGwTra1Fnm6FvZ0=" crossorigin="anonymous"></script>
     <script src="assets/js/script.js"></script>
     <?php if(isset($_GET["delete"])) : ?>
         <?php if($_GET["delete"] === "success") : ?>
