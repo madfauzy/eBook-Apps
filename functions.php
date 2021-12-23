@@ -160,9 +160,9 @@ function userLogin($user){
 
     if(empty($users)){
         return false;
-    }else{
-        $users = $users[0];
     }
+
+    $users = $users[0];
 
     if(password_verify($password,$users["password"])){
         $_SESSION["username"] = $username;
