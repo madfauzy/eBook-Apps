@@ -1,25 +1,25 @@
 <?php
-    require "functions.php"; 
+require "functions.php"; 
 
-    if(!isset($_SESSION["username"])){
-        header("Location: login.php");
-    }
+if(!isset($_SESSION["username"])){
+    header("Location: login.php");
+}
 
-    $ebookPerPage = 10;
-    $totalEbook = count(query("SELECT * FROM ebooks"));
-    $totalPage = ceil($totalEbook / $ebookPerPage);
-    $activePage = isset($_GET["page"]) ? $_GET["page"] : 1;
-    $index = $ebookPerPage * $activePage - $ebookPerPage;
-    $ebooks = query("SELECT * FROM ebooks LIMIT $index,$ebookPerPage");
+$ebookPerPage = 10;
+$totalEbook = count(query("SELECT * FROM ebooks"));
+$totalPage = ceil($totalEbook / $ebookPerPage);
+$activePage = isset($_GET["page"]) ? $_GET["page"] : 1;
+$index = $ebookPerPage * $activePage - $ebookPerPage;
+$ebooks = query("SELECT * FROM ebooks LIMIT $index,$ebookPerPage");
 
-    if(isset($_GET["keyword"])){
-        $keyword = htmlspecialchars($_GET["keyword"]);
-        $totalEbook = searchEbook($keyword);
-        $totalPage = ceil(count($totalEbook) / $ebookPerPage);
-        $ebooks = searchEbook($keyword,$index,$ebookPerPage);
-    }
+if(isset($_GET["keyword"])){
+    $keyword = htmlspecialchars($_GET["keyword"]);
+    $totalEbook = searchEbook($keyword);
+    $totalPage = ceil(count($totalEbook) / $ebookPerPage);
+    $ebooks = searchEbook($keyword,$index,$ebookPerPage);
+}
 
-    $totalEbook = count($ebooks);
+$totalEbook = count($ebooks);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,14 +29,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="icon" href="assets/img/icon_ebook.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/img/icon_ebook.png">
     <title>Home - eBook Apps</title>
 </head>
-<body class="bg-light">
+<body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" aria-label="Navigation">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.php">

@@ -1,25 +1,25 @@
 <?php 
-    require "../../functions.php";
+require "../../functions.php";
 
-    if(!isset($_SESSION["username"])){
-        header("Location: login.php");
-    }
+if(!isset($_SESSION["username"])){
+    header("Location: login.php");
+}
 
-    $ebookPerPage = 10;
-    $totalEbook = count(query("SELECT * FROM ebooks"));
-    $totalPage = ceil($totalEbook / $ebookPerPage);
-    $activePage = isset($_GET["page"]) ? $_GET["page"] : 1;
-    $index = $ebookPerPage * $activePage - $ebookPerPage;
-    $ebooks = query("SELECT * FROM ebooks LIMIT $index,$ebookPerPage");
+$ebookPerPage = 10;
+$totalEbook = count(query("SELECT * FROM ebooks"));
+$totalPage = ceil($totalEbook / $ebookPerPage);
+$activePage = isset($_GET["page"]) ? $_GET["page"] : 1;
+$index = $ebookPerPage * $activePage - $ebookPerPage;
+$ebooks = query("SELECT * FROM ebooks LIMIT $index,$ebookPerPage");
 
-    if(isset($_GET["keyword"])){
-        $keyword = htmlspecialchars($_GET["keyword"]);
-        $totalEbook = searchEbook($keyword);
-        $totalPage = ceil(count($totalEbook) / $ebookPerPage);
-        $ebooks = searchEbook($keyword,$index,$ebookPerPage);
-    }
+if(isset($_GET["keyword"])){
+    $keyword = htmlspecialchars($_GET["keyword"]);
+    $totalEbook = searchEbook($keyword);
+    $totalPage = ceil(count($totalEbook) / $ebookPerPage);
+    $ebooks = searchEbook($keyword,$index,$ebookPerPage);
+}
 
-    $totalEbook = count($ebooks);
+$totalEbook = count($ebooks);
 ?>
 <h1 class="h3 mb-4">Total Ebooks: <?= $totalEbook ?></h1>
 <?php if($totalEbook === 0) : ?>
