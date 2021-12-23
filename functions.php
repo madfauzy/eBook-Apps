@@ -71,11 +71,15 @@ function updateEbook($ebook){
         return "InvalidExtension";
     }elseif($cover === "SizeTooBig"){
         return "SizeTooBig";
-    }elseif($cover !== $oldCover){
-        unlink("assets/img/$oldCover");
     }
 
     mysqli_query($conn,"UPDATE ebooks SET title = '$title', author = '$author', category = '$category', price = '$price', cover = '$cover' WHERE id = $id");
+
+    if(mysqli_affected_rows($conn) > 0 && $cover !== $oldCover){
+        unlink("assets/img/$oldCover");
+    }elseif(mysqli_affected_rows($conn) < 0 && $cover !== $oldCover){
+        unlink("assets/img/$cover");
+    }
 
     return mysqli_affected_rows($conn);
 }
