@@ -1,9 +1,9 @@
 <?php 
-    require "functions.php";
-    
-    if(isset($_POST["signup"])){
-        $result = userSignUp($_POST);
-    }
+require "functions.php";
+
+if(isset($_POST["signup"])){
+    $result = userSignUp($_POST);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
