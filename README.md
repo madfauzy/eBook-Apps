@@ -1,34 +1,43 @@
-# eBook-Apps
-eBook Apps adalah website yang menyajikan data-data ebook dibidang IT.
+# eBook Apps ⚡️
+An application that provides information about digital books in IT and various fields.
 
-## How To Use On Local
+## Getting Started 🚀
 
-1. **Clone Repository di Folder htdocs**
+To start running your project locally, follow these steps: 
+
+First, clone the repository to the htdocs folder.
 
 ```
 git clone https://github.com/madfauzy/eBook-Apps.git
 ```
 
-2. **Jalankan XAMPP dan buat Database ebookapps**
+Then, launch the XAMPP control panel and **start** Apache MySQL. 
 
-3. **Import `ebookapps.sql` ke Database ebookapps**
-
-4. **Jalankan Website**
+Then, run PHPMyAdmin in your browser.
 
 ```
-https://localhost/eBook-Apps/
+http://localhost/phpmyadmin/
+```
+
+Next, create database `ebookapps` and import `ebookapps.sql`
+
+Finally, run the eBooks Apps.
+
+```
+http://localhost/eBook-Apps/
 ```
 
 ## Login Account
 
 ```
-Akun Admin
 Username: admin
 Password: admin
 ```
 
 ```
-Akun Member
 Username: member
 Password: member
 ```
+
+## License 📄
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/madfauzy/eBook-Apps/blob/main/LICENSE) file for details.
