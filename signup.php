@@ -24,35 +24,37 @@ if(isset($_POST["signup"])){
 <body>
     <div class="form-sign text-center">
         <form action="" method="post">
-            <img class="icon mb-3" src="assets/img/icon_ebook.png" alt="Icon eBook">
+            <a href="index.php">
+                <img class="icon mb-3" src="assets/img/icon_ebook.png" alt="Icon eBook">
+            </a>
             <h1 class="h3 mb-3">Please Sign Up</h1>
             <?php if(isset($result)) : ?>
                 <?php if($result === "Empty") : ?>
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     Invalid username or password!
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 <?php elseif($result === "UsernameAlreadyExist") : ?>
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     Username already exist!
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 <?php elseif($result === "InvalidPassword") : ?>
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     Password must be at least 8 characters long!
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 <?php elseif($result === "WrongPassword") : ?>
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     Incorrect confirm password!
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 <?php elseif($result > 0) : ?>
                 <?php $success = true; ?>
                 <?php else : ?>
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     Failed to sign up. Try again!
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 <?php endif; ?>
             <?php endif; ?>

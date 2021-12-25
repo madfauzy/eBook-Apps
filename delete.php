@@ -6,7 +6,7 @@
     }
 
     if(deleteEbook($_GET) > 0){
-        header("Location: index.php?delete=success");
+        header("Location: list.php?delete=success");
     }else{
-        header("Location: index.php?delete=failed");
+        header("Location: list.php?delete=failed");
     }

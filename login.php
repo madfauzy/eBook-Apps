@@ -5,20 +5,21 @@ if(isset($_COOKIE["user_id"],$_COOKIE["user_key"])){
     $user_id = $_COOKIE["user_id"];
     $user_key = $_COOKIE["user_key"];
     $users = query("SELECT * FROM users WHERE id = $user_id")[0];
+
     if($user_key === hash("sha256",$users["username"])){
         $_SESSION["username"] = $users["username"];
     }
 }
 
 if(isset($_SESSION["username"])){
-    header("Location: index.php");
+    header("Location: list.php");
 }
 
 if(isset($_POST["login"])){
     $result = userLogin($_POST);
     
     if($result === "Success"){
-        header("Location: index.php");
+        header("Location: list.php");
     }else{
         $alert = true;
     }
@@ -43,12 +44,14 @@ if(isset($_POST["login"])){
 <body>
     <div class="form-sign text-center">
         <form action="" method="post">
-            <img class="icon mb-3" src="assets/img/icon_ebook.png" alt="Icon eBook">
-            <h1 class="h3 mb-3">Login to eBook Apps</h1>
+            <a href="index.php">
+                <img class="icon mb-3" src="assets/img/icon_ebook.png" alt="Icon eBook">
+            </a>
+            <h1 class="h3 mb-3">Login to <span>eBook Apps</span></h1>
             <?php if(isset($alert)) : ?>
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 Incorrect username or password!
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             <?php endif; ?>
             <div class="form-floating">

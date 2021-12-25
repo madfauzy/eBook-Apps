@@ -35,14 +35,13 @@ if(!isset($_SESSION["username"])){
                         <a class="nav-link" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <!-- TODO: Buat List eBook -->
-                        <a class="nav-link" href="#">List eBook</a>
+                        <a class="nav-link" href="list.php">List eBook</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="create.php">Add eBook</a>
                     </li>
                 </ul>
-                <a class="btn btn-warning mx-lg-2 my-lg-0 mt-3 mb-2 fw-bold" href="logout.php">Logout</a>
+                <a class="btn btn-warning mx-lg-2 my-lg-0 mb-2 fw-bold" href="logout.php">Logout</a>
             </div>
         </div>
     </nav>
@@ -109,7 +108,7 @@ if(!isset($_SESSION["username"])){
     </main> 
 
     <footer class="bg-dark text-light p-4">
-        <div class="container d-flex justify-content-between align-items-center">
+        <div class="container d-flex flex-column flex-lg-row justify-content-between align-items-center">
             <div>&copy; 2021 Copyright <a class="link-warning text-decoration-none fw-bold" href="https://github.com/madfauzy" target="_blank" rel="noopener">Ahmad Fauzy</a>. All Rights Reserved.</div>
             <div>Icon made by <a class="link-warning text-decoration-none fw-bold" href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank" rel="noopener">Freepik</a> from <a class="link-warning text-decoration-none fw-bold" href="https://www.flaticon.com/" title="Flaticon" target="_blank" rel="noopener">www.flaticon.com</a></div>
         </div>

@@ -11,10 +11,6 @@ body {
     background-color: #f5f5f5;
 }
 
-.icon {
-    width: 60px;
-}
-
 .form-sign {
     width: 100%;
     max-width: 350px;
@@ -22,12 +18,18 @@ body {
     margin: auto;
 }
 
+.form-sign .icon {
+    width: 60px;
+}
+
+.form-sign h1 span {
+    font-family: "Courgette", cursive;
+}
+
 .form-sign .form-floating:focus-within {
-    z-index: 2;
+    z-index: 1;
 }
 
 .form-sign input {
     margin-bottom: -1px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
 }
