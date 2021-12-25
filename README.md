@@ -1,7 +1,7 @@
-# eBook Apps ⚡️
-An application that provides information about digital books in IT and various fields.
+# ⚡️ eBook Apps
+The eBook Apps is a web application that helps you browse ebooks from anywhere using your smartphone, laptop, and computer.
 
-## Getting Started 🚀
+## 🚀 Getting Started 
 
 To start running your project locally, follow these steps: 
 
@@ -39,5 +39,5 @@ Username: member
 Password: member
 ```
 
-## License 📄
+## 📄 License 
 This project is licensed under the MIT License. See the [LICENSE](https://github.com/madfauzy/eBook-Apps/blob/main/LICENSE) file for details.
