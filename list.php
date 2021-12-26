@@ -80,7 +80,7 @@ $totalEbook = count($ebooks);
                         <div class="card h-100 shadow-sm">
                             <div class="row g-0">
                                 <div class="col-xl-4 text-center">
-                                    <img class="img-fluid rounded-start" src="assets/img/<?= $ebook["cover"] ?>" alt="<?= $ebook["cover"] ?>">
+                                    <img class="img-fluid rounded-start h-100" src="assets/img/<?= $ebook["cover"] ?>" alt="<?= $ebook["cover"] ?>">
                                 </div>
                                 <div class="col-xl-8">
                                     <div class="card-body">
@@ -94,6 +94,14 @@ $totalEbook = count($ebooks);
                                             <span class="badge bg-success">Free</span>
                                             <?php else : ?>
                                             <span class="badge bg-danger">Paid</span>
+                                            <?php endif; ?>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span>Link: <a class="text-decoration-none" href="<?= $ebook["link"] ?>" target="_blank"><?= $ebook["author"] ?></a></span>
+                                            <?php if($ebook["verified"] === "Yes") : ?>
+                                            <span><i class="bi bi-patch-check-fill text-success"></i> Verified</span>
+                                            <?php else : ?>
+                                            <span><i class="bi bi-patch-exclamation-fill text-danger"></i> Unverified</span>
                                             <?php endif; ?>
                                         </li>
                                     </ul>

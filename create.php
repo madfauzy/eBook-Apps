@@ -54,13 +54,13 @@ if(!isset($_SESSION["username"])){
             <div class="row mb-3">
                 <label class="col-md-2 col-form-label" for="title">Title</label>
                 <div class="col-md-10">
-                    <input class="form-control" type="text" id="title" name="title" maxlength="100" autocomplete="off" required autofocus>
+                    <input class="form-control" type="text" id="title" name="title" maxlength="100" autocomplete="off" placeholder="Tutorial Programming" required autofocus>
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-md-2 col-form-label" for="author">Author</label>
                 <div class="col-md-10">
-                    <input class="form-control" type="text" id="author" name="author" maxlength="100" autocomplete="off" required>
+                    <input class="form-control" type="text" id="author" name="author" maxlength="100" autocomplete="off" placeholder="Anonymous" required>
                 </div>
             </div>
             <div class="row mb-3">
@@ -90,6 +90,12 @@ if(!isset($_SESSION["username"])){
                         <input class="form-check-input" type="radio" name="price" id="paid" value="Paid">
                         <label class="form-check-label" for="paid">Paid</label>
                     </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-md-2 col-form-label" for="link">Link</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="text" id="link" name="link" maxlength="100" autocomplete="off" placeholder="https://www." required>
                 </div>
             </div>
             <div class="row mb-3 align-items-center">

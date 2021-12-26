@@ -108,6 +108,21 @@ $ebooks = query("SELECT * FROM ebooks WHERE id = $id")[0];
                         </div>
                     </div>
                     <div class="mb-3">
+                        <label class="form-label" for="link">Link</label>
+                        <input class="form-control" type="text" id="link" name="link" value="<?= $ebooks["link"] ?>" maxlength="100" autocomplete="off" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Verified?</label><br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="verified" id="yes" <?php if($ebooks["verified"] === "Yes"){echo "checked";}?> value="Yes">
+                            <label class="form-check-label" for="yes">Yes</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="verified" id="no" <?php if($ebooks["verified"] === "No"){echo "checked";}?> value="No">
+                            <label class="form-check-label" for="no">No</label>
+                        </div>
+                    </div>
+                    <div class="mb-3">
                         <label class="form-label" for="cover">Cover</label>
                         <div class="form-text text-md-end" id="coverInfo">Maximum File Size: 1 MB, Format File: jpg, jpeg, png</div>
                         <input class="form-control" aria-describedby="coverInfo" type="file" id="cover" name="cover">

@@ -20,6 +20,7 @@ function addEbook($ebook){
     $author = htmlspecialchars($ebook["author"]);
     $category = htmlspecialchars($ebook["category"]);
     $price = htmlspecialchars($ebook["price"]);
+    $link = htmlspecialchars($ebook["link"]);
     $cover = uploadCover();
 
     if(!$cover){
@@ -30,7 +31,7 @@ function addEbook($ebook){
         return "SizeTooBig";
     }
 
-    mysqli_query($conn,"INSERT INTO ebooks (title,author,category,price,cover) VALUES ('$title','$author','$category','$price','$cover')");
+    mysqli_query($conn,"INSERT INTO ebooks (title,author,category,price,link,verified,cover) VALUES ('$title','$author','$category','$price','$link','No','$cover')");
 
     if(mysqli_affected_rows($conn) < 0){
         unlink("assets/img/$cover");
@@ -60,6 +61,8 @@ function updateEbook($ebook){
     $author = htmlspecialchars($ebook["author"]);
     $category = htmlspecialchars($ebook["category"]);
     $price = htmlspecialchars($ebook["price"]);
+    $link = htmlspecialchars($ebook["link"]);
+    $verified = htmlspecialchars($ebook["verified"]);
     $oldCover = htmlspecialchars($ebook["oldCover"]);
     $cover = uploadCover();
 
@@ -73,7 +76,7 @@ function updateEbook($ebook){
         return "SizeTooBig";
     }
 
-    mysqli_query($conn,"UPDATE ebooks SET title = '$title', author = '$author', category = '$category', price = '$price', cover = '$cover' WHERE id = $id");
+    mysqli_query($conn,"UPDATE ebooks SET title = '$title',author = '$author',category = '$category',price = '$price',link = '$link',verified = '$verified',cover = '$cover' WHERE id = $id");
 
     if(mysqli_affected_rows($conn) > 0 && $cover !== $oldCover){
         unlink("assets/img/$oldCover");
