@@ -1,10 +1,6 @@
 <?php
 require "functions.php"; 
 
-if(!isset($_SESSION["username"])){
-    header("Location: login.php");
-}
-
 $ebookPerPage = 10;
 $totalEbook = count(query("SELECT * FROM ebooks"));
 $totalPage = ceil($totalEbook / $ebookPerPage);
@@ -53,14 +49,18 @@ $totalEbook = count($ebooks);
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="list.php">List eBook</a>
                     </li>
+                    <?php if(isset($_SESSION["username"])) : ?>
                     <li class="nav-item">
                         <a class="nav-link" href="create.php">Add eBook</a>
                     </li>
+                    <?php endif; ?>
                 </ul>
                 <form class="d-flex" action="" method="get">
                     <input class="form-control me-2" id="keyword" aria-label="Search" type="search" name="keyword" placeholder="Search eBooks" autocomplete="off" value="<?php if(isset($keyword)){echo $keyword;}?>" autofocus>
                 </form>
+                <?php if(isset($_SESSION["username"])) : ?>
                 <a class="btn btn-warning mx-lg-2 my-lg-0 mt-3 mb-2 fw-bold" href="logout.php">Logout</a>
+                <?php endif; ?>
             </div>
         </div>
     </nav>
@@ -97,12 +97,16 @@ $totalEbook = count($ebooks);
                                             <?php endif; ?>
                                         </li>
                                     </ul>
-                                    <div class="card-body text-center">
-                                        <div class="btn-group" role="group" aria-label="Update and Delete">
-                                            <a class="btn btn-sm btn-outline-success" href="update.php?id=<?= $ebook["id"] ?>">Update</a>
-                                            <a class="btn btn-sm btn-outline-danger delete-ebook" href="delete.php?id=<?= $ebook["id"] ?>&cover=<?= $ebook["cover"] ?>">Delete</a>
+                                    <?php if(isset($_SESSION["username"])) : ?>
+                                        <?php if($_SESSION["level"] === "admin") : ?>
+                                        <div class="card-body text-center">
+                                            <div class="btn-group" role="group" aria-label="Update and Delete">
+                                                <a class="btn btn-sm btn-outline-success" href="update.php?id=<?= $ebook["id"] ?>">Update</a>
+                                                <a class="btn btn-sm btn-outline-danger delete-ebook" href="delete.php?id=<?= $ebook["id"] ?>&cover=<?= $ebook["cover"] ?>">Delete</a>
+                                            </div>
                                         </div>
-                                    </div>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>

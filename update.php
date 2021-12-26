@@ -5,6 +5,12 @@ if(!isset($_SESSION["username"])){
     header("Location: login.php");
 }
 
+if(isset($_SESSION["username"])){
+    if($_SESSION["level"] === "member"){
+        header("Location: list.php");
+    }
+}
+
 $id = $_GET["id"];
 $ebooks = query("SELECT * FROM ebooks WHERE id = $id")[0];
 ?>

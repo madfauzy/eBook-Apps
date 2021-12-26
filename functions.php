@@ -170,6 +170,7 @@ function userLogin($user){
 
     if(password_verify($password,$users["password"])){
         $_SESSION["username"] = $username;
+        $_SESSION["level"] = $users["level"];
         if(isset($_POST["remember"])){
             setcookie("user_id",$users["id"],time() + (86400 * 30));
             setcookie("user_key",hash("sha256",$username),time() + (86400 * 30));

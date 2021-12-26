@@ -1,12 +1,20 @@
 <?php 
-    require "functions.php";
+require "functions.php";
 
-    if(!isset($_SESSION["username"])){
-        header("Location: login.php");
-    }
+if(!isset($_SESSION["username"])){
+    header("Location: login.php");
+    exit;
+}
 
-    if(deleteEbook($_GET) > 0){
-        header("Location: list.php?delete=success");
-    }else{
-        header("Location: list.php?delete=failed");
+if(isset($_SESSION["username"])){
+    if($_SESSION["level"] === "member"){
+        header("Location: list.php");
+        exit;
     }
+}
+
+if(deleteEbook($_GET) > 0){
+    header("Location: list.php?delete=success");
+}else{
+    header("Location: list.php?delete=failed");
+}

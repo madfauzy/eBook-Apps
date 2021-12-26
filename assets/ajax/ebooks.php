@@ -1,10 +1,6 @@
 <?php 
 require "../../functions.php";
 
-if(!isset($_SESSION["username"])){
-    header("Location: login.php");
-}
-
 $ebookPerPage = 10;
 $totalEbook = count(query("SELECT * FROM ebooks"));
 $totalPage = ceil($totalEbook / $ebookPerPage);
@@ -52,12 +48,16 @@ $totalEbook = count($ebooks);
                                     <?php endif; ?>
                                 </li>
                             </ul>
-                            <div class="card-body text-center">
-                                <div class="btn-group" role="group" aria-label="Update and Delete">
-                                    <a class="btn btn-sm btn-outline-success" href="update.php?id=<?= $ebook["id"] ?>">Update</a>
-                                    <a class="btn btn-sm btn-outline-danger delete-ebook" href="delete.php?id=<?= $ebook["id"] ?>&cover=<?= $ebook["cover"] ?>">Delete</a>
+                            <?php if(isset($_SESSION["username"])) : ?>
+                                <?php if($_SESSION["level"] === "admin") : ?>
+                                <div class="card-body text-center">
+                                    <div class="btn-group" role="group" aria-label="Update and Delete">
+                                        <a class="btn btn-sm btn-outline-success" href="update.php?id=<?= $ebook["id"] ?>">Update</a>
+                                        <a class="btn btn-sm btn-outline-danger delete-ebook" href="delete.php?id=<?= $ebook["id"] ?>&cover=<?= $ebook["cover"] ?>">Delete</a>
+                                    </div>
                                 </div>
-                            </div>
+                                <?php endif; ?>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

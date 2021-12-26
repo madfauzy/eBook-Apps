@@ -38,7 +38,9 @@
                     <?php endif; ?>
                 </ul>
                 <?php if(isset($_SESSION["username"])) : ?>
-                    <a class="btn btn-warning mx-lg-2 my-lg-0 mt-3 mb-2 fw-bold" href="logout.php">Logout</a>
+                <a class="btn btn-warning mx-lg-2 my-lg-0 mb-2 fw-bold" href="logout.php">Logout</a>
+                <?php else : ?>
+                <a class="btn btn-warning mx-lg-2 my-lg-0 mb-2 fw-bold" href="login.php">Sign In</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -47,7 +49,7 @@
     <main class="container text-center">
         <div class="col col-lg-6 mx-auto">
             <h1>Getting Started</h1>
-            <p class="lead">The eBook Apps is a web application that helps you browse ebooks from anywhere using your smartphone, laptop, and computer. <span class="fw-bold">Sign Up to become a member</span></p>
+            <p class="lead">The eBook Apps is a web application that helps you browse ebooks from anywhere using your smartphone and laptop. <span class="fw-bold">Sign Up to become a member</span></p>
             <p class="lead">
                 <a class="btn btn-lg btn-secondary fw-bold bg-white text-dark" href="signup.php">Sign Up</a>
             </p>
