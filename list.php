@@ -55,6 +55,9 @@ $totalEbook = count($ebooks);
                     </li>
                     <?php endif; ?>
                 </ul>
+                <?php if(isset($_SESSION["username"])) : ?>
+                <div class="text-white mb-lg-0 mb-3 me-2">Signed in as <strong><?= $_SESSION["username"]; ?></strong></div>
+                <?php endif; ?>
                 <form class="d-flex" action="" method="get">
                     <input id="keyword" class="form-control me-2" aria-label="Search" type="search" name="keyword" placeholder="Search eBooks" autocomplete="off" <?= isset($keyword) ? "value=$keyword" : ""; ?> autofocus>
                 </form>
@@ -66,12 +69,7 @@ $totalEbook = count($ebooks);
     </nav>
 
     <main id="content" class="container my-4">
-        <div class="mb-3 d-flex justify-content-between align-items-center">
-            <h1 class="fs-3">Total Ebooks: <?= $totalEbook; ?></h1>
-            <?php if(isset($_SESSION["username"])) : ?>
-            <h2 class="fs-5">Signed in as <strong><?= $_SESSION["username"]; ?></strong></h2>
-            <?php endif; ?>
-        </div>
+        <h1 class="fs-3 mb-4">Total Ebooks: <?= $totalEbook; ?></h1>
         <?php if($totalEbook === 0) : ?>
         <div class="not-found d-flex flex-column align-items-center justify-content-center">
             <i class="bi bi-search" aria-hidden="true"></i>

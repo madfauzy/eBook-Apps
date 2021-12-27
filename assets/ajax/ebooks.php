@@ -17,12 +17,7 @@ if(isset($_GET["keyword"])){
 
 $totalEbook = count($ebooks);
 ?>
-<div class="mb-3 d-flex justify-content-between align-items-center">
-    <h1 class="fs-3">Total Ebooks: <?= $totalEbook; ?></h1>
-    <?php if(isset($_SESSION["username"])) : ?>
-    <h2 class="fs-5">Signed in as <strong><?= $_SESSION["username"]; ?></strong></h2>
-    <?php endif; ?>
-</div>
+<h1 class="fs-3 mb-4">Total Ebooks: <?= $totalEbook; ?></h1>
 <?php if($totalEbook === 0) : ?>
 <div class="not-found d-flex flex-column align-items-center justify-content-center">
     <i class="bi bi-search" aria-hidden="true"></i>

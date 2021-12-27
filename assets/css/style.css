@@ -31,4 +31,8 @@ body {
     .not-found {
         min-height: 450px;
     }
+
+    footer {
+        font-size: 0.8em;
+    }
 }
