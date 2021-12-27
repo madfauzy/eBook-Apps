@@ -40,7 +40,7 @@ Password: member
 
 ## 🔑 User Privileges and Level
 ```
-Viewer -> Access Home and List eBook
+Visitor -> Access Home and List eBook
 ```
 
 ```
@@ -52,4 +52,4 @@ Admin -> Access Home, List eBook, Add eBook, Update eBook, and Delete eBook
 ```
 
 ## 📄 License 
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/madfauzy/eBook-Apps/blob/main/LICENSE) file for details.
+The eBook Apps is open-source project licensed under the [MIT license](https://github.com/madfauzy/eBook-Apps/blob/main/LICENSE).
