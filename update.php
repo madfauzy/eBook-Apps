@@ -5,10 +5,8 @@ if(!isset($_SESSION["username"])){
     header("Location: login.php");
 }
 
-if(isset($_SESSION["username"])){
-    if($_SESSION["level"] === "member"){
-        header("Location: list.php");
-    }
+if(isset($_SESSION["username"]) && $_SESSION["level"] === "member"){
+    header("Location: list.php");
 }
 
 $id = $_GET["id"];

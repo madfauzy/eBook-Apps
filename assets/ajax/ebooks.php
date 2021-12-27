@@ -53,11 +53,11 @@ $totalEbook = count($ebooks);
                                 <?php endif; ?>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Link: <a class="text-decoration-none" href="<?= $ebook["link"]; ?>" target="_blank"><?= $ebook["author"]; ?></a></span>
+                                <span>Link: <a class="text-decoration-none" href="<?= $ebook["link"]; ?>" target="_blank" rel="noopener"><?= $ebook["author"]; ?></a></span>
                                 <?php if($ebook["verified"] === "Yes") : ?>
-                                <span><i class="bi bi-patch-check-fill text-success"></i> Verified</span>
+                                <span><i class="bi bi-patch-check-fill text-success" aria-hidden="true"></i> Verified</span>
                                 <?php else : ?>
-                                <span><i class="bi bi-patch-exclamation-fill text-danger"></i> Unverified</span>
+                                <span><i class="bi bi-patch-exclamation-fill text-danger" aria-hidden="true"></i> Unverified</span>
                                 <?php endif; ?>
                             </li>
                         </ul>

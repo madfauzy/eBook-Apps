@@ -6,11 +6,9 @@ if(!isset($_SESSION["username"])){
     exit;
 }
 
-if(isset($_SESSION["username"])){
-    if($_SESSION["level"] === "member"){
-        header("Location: list.php");
-        exit;
-    }
+if(isset($_SESSION["username"]) && $_SESSION["level"] === "member"){
+    header("Location: list.php");
+    exit;
 }
 
 if(deleteEbook($_GET) > 0){
