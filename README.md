@@ -1,8 +1,7 @@
 # ⚡️ eBook Apps
-The eBook Apps is a web application that helps you browse ebooks from anywhere using your smartphone, laptop, and computer.
+The eBook Apps is a web application that helps you browse ebooks from anywhere using your smartphone and laptop.
 
 ## 🚀 Getting Started 
-
 To start running your project locally, follow these steps: 
 
 First, clone the repository to the htdocs folder.
@@ -27,7 +26,7 @@ Finally, run the eBooks Apps.
 http://localhost/eBook-Apps/
 ```
 
-## Login Account
+## 📍 Demo Login Account
 
 ```
 Username: admin
@@ -37,6 +36,19 @@ Password: admin
 ```
 Username: member
 Password: member
+```
+
+## 🔑 User Privileges and Level
+```
+Viewer -> Access Home and List eBook
+```
+
+```
+Member -> Access Home, List eBook, and Add eBook
+```
+
+```
+Admin -> Access Home, List eBook, Add eBook, Update eBook, and Delete eBook
 ```
 
 ## 📄 License 
