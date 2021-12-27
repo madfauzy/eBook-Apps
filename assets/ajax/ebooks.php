@@ -9,7 +9,7 @@ $index = $ebookPerPage * $activePage - $ebookPerPage;
 $ebooks = query("SELECT * FROM ebooks LIMIT $index,$ebookPerPage");
 
 if(isset($_GET["keyword"])){
-    $keyword = $_GET["keyword"];
+    $keyword = htmlspecialchars($_GET["keyword"]);
     $totalEbook = count(searchEbook($keyword));
     $totalPage = ceil($totalEbook / $ebookPerPage);
     $ebooks = searchEbook($keyword,$index,$ebookPerPage);
@@ -78,15 +78,15 @@ $totalEbook = count($ebooks);
 <?php if($totalEbook > 0) : ?>
 <nav class="my-4" aria-label="Page navigation">
     <ul class="pagination justify-content-center">
-        <li class="page-item<?= ($activePage <= 1) ? " disabled" : ""; ?>">
+        <li class="page-item<?= $activePage <= 1 ? " disabled" : ""; ?>">
             <a class="page-link" href="?page=<?= $activePage - 1 ?><?= isset($keyword) ? "&keyword=$keyword" : ""; ?>">Previous</a>
         </li>
         <?php for($i = 1; $i <= $totalPage; $i++) : ?>
-            <li class="page-item<?= ($i == $activePage) ? " active" : ""; ?>">
+            <li class="page-item<?= $i == $activePage ? " active" : ""; ?>">
                 <a class="page-link" href="?page=<?= $i ?><?= isset($keyword) ? "&keyword=$keyword" : ""; ?>"><?= $i ?></a>
             </li>
         <?php endfor; ?>
-        <li class="page-item<?= ($activePage >= $totalPage) ? " disabled" : ""; ?>">
+        <li class="page-item<?= $activePage >= $totalPage ? " disabled" : ""; ?>">
             <a class="page-link" href="?page=<?= $activePage + 1 ?><?= isset($keyword) ? "&keyword=$keyword" : ""; ?>">Next</a>
         </li>
     </ul>
