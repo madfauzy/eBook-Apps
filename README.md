@@ -52,4 +52,4 @@ Admin -> Access Home, List eBook, Add eBook, Update eBook, and Delete eBook
 ```
 
 ## 📄 License 
-The eBook Apps is open-source project licensed under the [MIT license](https://github.com/madfauzy/eBook-Apps/blob/main/LICENSE).
+The eBook Apps is open-source project licensed under the [MIT License](https://github.com/madfauzy/eBook-Apps/blob/main/LICENSE).
