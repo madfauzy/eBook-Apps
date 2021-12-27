@@ -41,13 +41,14 @@ if(!isset($_SESSION["username"])){
                         <a class="nav-link active" aria-current="page" href="create.php">Add eBook</a>
                     </li>
                 </ul>
+                <div class="text-white mb-lg-0 mb-3">Signed in as <strong><?= isset($_SESSION["username"]) ? $_SESSION["username"] : ""; ?></strong></div>
                 <a class="btn btn-warning mx-lg-2 my-lg-0 mb-2 fw-bold" href="logout.php">Logout</a>
             </div>
         </div>
     </nav>
 
     <main class="container text-md-center my-4 p-4">
-        <h1 class="h3 fw-bold text-center">Add eBook</h1>
+        <h1 class="fs-3 fw-bold text-center">Add eBook</h1>
         <p class="text-center">Add your favorite eBook now.</p>
         <hr>
         <form action="" method="post" enctype="multipart/form-data">
@@ -123,7 +124,7 @@ if(!isset($_SESSION["username"])){
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.0/dist/sweetalert2.all.min.js" integrity="sha256-nk6ExuG7ckFYKC1p3efjdB14TU+pnGwTra1Fnm6FvZ0=" crossorigin="anonymous"></script>
     <?php if(isset($_POST["submit"])) : ?>
-        <?php $result = addEbook($_POST) ?>
+        <?php $result = addEbook($_POST); ?>
         <?php if($result === "InvalidExtension") : ?>
         <script>
             Swal.fire(

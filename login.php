@@ -47,7 +47,7 @@ if(isset($_POST["login"])){
             <a href="index.php">
                 <img class="icon mb-3" src="assets/img/icon_ebook.png" alt="Icon eBook">
             </a>
-            <h1 class="h3 mb-3">Login to <span>eBook Apps</span></h1>
+            <h1 class="fs-3 mb-3">Login to <span>eBook Apps</span></h1>
             <?php if(isset($alert)) : ?>
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 Incorrect username or password!

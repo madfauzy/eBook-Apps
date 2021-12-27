@@ -1,3 +1,8 @@
+const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+
 $(document).ready(function(){
     $(".delete-ebook").on("click", function(){
         let getLink = $(this).attr("href");
@@ -19,14 +24,14 @@ $(document).ready(function(){
 });
 
 const keyword = document.getElementById("keyword");
-const listEbook = document.querySelector("main");
+const content = document.getElementById("content");
 
 keyword.addEventListener("keyup",function(){
     const xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4 && xhr.status == 200){
-            listEbook.innerHTML = xhr.responseText;
+            content.innerHTML = xhr.responseText;
         }
     }
 

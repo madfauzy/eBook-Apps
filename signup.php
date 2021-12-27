@@ -27,7 +27,7 @@ if(isset($_POST["signup"])){
             <a href="index.php">
                 <img class="icon mb-3" src="assets/img/icon_ebook.png" alt="Icon eBook">
             </a>
-            <h1 class="h3 mb-3">Please Sign Up</h1>
+            <h1 class="fs-3 mb-3">Please Sign Up</h1>
             <?php if(isset($result)) : ?>
                 <?php if($result === "Empty") : ?>
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -78,7 +78,7 @@ if(isset($_POST["signup"])){
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.0/dist/sweetalert2.all.min.js" integrity="sha256-nk6ExuG7ckFYKC1p3efjdB14TU+pnGwTra1Fnm6FvZ0=" crossorigin="anonymous"></script>
-    <script src="assets/js/sign.js"></script>
+    <script src="assets/js/script.js"></script>
     <?php if(isset($success)) : ?>
     <script>
         let timerInterval

@@ -1,4 +1,4 @@
-<?php require "functions.php" ?>
+<?php require "functions.php"; ?>
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 <head>
@@ -38,6 +38,7 @@
                     <?php endif; ?>
                 </ul>
                 <?php if(isset($_SESSION["username"])) : ?>
+                <div class="text-white mb-lg-0 mb-3">Signed in as <strong><?= $_SESSION["username"]; ?></strong></div>
                 <a class="btn btn-warning mx-lg-2 my-lg-0 mb-2 fw-bold" href="logout.php">Logout</a>
                 <?php else : ?>
                 <a class="btn btn-warning mx-lg-2 my-lg-0 mb-2 fw-bold" href="login.php">Sign In</a>
