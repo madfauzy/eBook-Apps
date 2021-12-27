@@ -26,7 +26,7 @@ Finally, run the eBooks Apps.
 http://localhost/eBook-Apps/
 ```
 
-## 📍 Demo Login Account
+## 📍 Login Account For Local
 
 ```
 Username: admin
