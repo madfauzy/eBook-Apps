@@ -89,7 +89,7 @@ function updateEbook($ebook){
 
 function searchEbook($keyword,$index = null,$ebookPerPage = null){
     if(isset($index,$ebookPerPage)){
-        return query("SELECT * FROM ebooks WHERE title LIKE '%$keyword%' OR author LIKE '%$keyword%' OR category LIKE '%$keyword%' OR price LIKE '%$keyword%' LIMIT $index,$ebookPerPage");
+        return query("SELECT * FROM ebooks WHERE title LIKE '%$keyword%' OR author LIKE '%$keyword%' OR category LIKE '%$keyword%' OR price LIKE '%$keyword%' ORDER BY id DESC LIMIT $index,$ebookPerPage");
     }
 
     return query("SELECT * FROM ebooks WHERE title LIKE '%$keyword%' OR author LIKE '%$keyword%' OR category LIKE '%$keyword%' OR price LIKE '%$keyword%'");
