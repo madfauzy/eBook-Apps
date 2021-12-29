@@ -5,7 +5,7 @@ if(!isset($_SESSION["username"])){
     header("Location: login.php");
 }
 
-if(isset($_SESSION["username"]) && $_SESSION["level"] === "member"){
+if(isset($_SESSION["username"]) && $_SESSION["level"] !== "admin"){
     header("Location: list.php");
 }
 

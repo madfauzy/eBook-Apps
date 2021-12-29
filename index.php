@@ -48,7 +48,7 @@
     </nav>
 
     <main class="container text-center">
-        <div class="col col-lg-6 mx-auto">
+        <div class="col col-md-10 col-lg-8 col-xl-6 mx-auto">
             <h1>Getting Started</h1>
             <p class="lead">The eBook Apps is a web application that helps you browse ebooks from anywhere using your smartphone and laptop. <span class="fw-bold">Sign Up to become a member</span></p>
             <p class="lead">

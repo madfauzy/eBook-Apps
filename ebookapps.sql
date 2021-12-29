@@ -55,7 +55,8 @@ INSERT INTO `ebooks` (`id`, `title`, `author`, `category`, `price`, `link`, `ver
 (10, 'Fundamentals of Information Security', 'Sanil Nadkarni', 'IT &amp; Software', 'Paid', 'https://www.tutorialspoint.com/ebook/fundamentals_of_information_security/index.asp', 'Yes', 'IMG_8237dc3b77c87165d721fe5195b766e8.jpg'),
 (11, 'Arduino Tutorial', 'Tutorialspoint', 'IT &amp; Software', 'Paid', 'https://www.tutorialspoint.com/ebook/arduino_tutorial/index.asp', 'Yes', 'IMG_6da2f64d88207836cec3a644d83d10ba.jpg'),
 (12, 'Operating System Tutorial', 'Tutorialspoint', 'IT &amp; Software', 'Paid', 'https://www.tutorialspoint.com/ebook/operating_system_tutorial/index.asp', 'Yes', 'IMG_94be509757316ce59ccf6e207ae10bba.jpg'),
-(13, 'Docker Tutorial', 'Tutorialspoint', 'IT &amp; Software', 'Paid', 'https://www.tutorialspoint.com/ebook/docker_tutorial/index.asp', 'Yes', 'IMG_61b64030d4d76e049acfb1520d7ed427.jpg');
+(13, 'Docker Tutorial', 'Tutorialspoint', 'IT &amp; Software', 'Paid', 'https://www.tutorialspoint.com/ebook/docker_tutorial/index.asp', 'Yes', 'IMG_61b64030d4d76e049acfb1520d7ed427.jpg'),
+(14, 'Modern Cybersecurity Practices', 'Tutorialspoint', 'Cyber Security', 'Paid', 'https://www.tutorialspoint.com/ebook/modern_cybersecurity_practices/index.asp', 'Yes', 'IMG_a8bff432332159d4a1e9ece43206ee7a.jpg');
 
 -- --------------------------------------------------------
 
@@ -102,7 +103,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `ebooks`
 --
 ALTER TABLE `ebooks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
