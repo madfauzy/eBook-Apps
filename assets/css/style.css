@@ -29,7 +29,7 @@ body {
 
 @media screen and (max-width: 576px) {
     .not-found {
-        min-height: 450px;
+        min-height: 500px;
     }
 
     .list-ebook img {
