@@ -4,7 +4,7 @@ require "functions.php";
 $ebookPerPage = 10;
 $totalEbook = count(query("SELECT * FROM ebooks"));
 $totalPage = ceil($totalEbook / $ebookPerPage);
-$activePage = isset($_GET["page"]) ? $_GET["page"] : 1;
+$activePage = $_GET["page"] ?? 1;
 $index = $ebookPerPage * $activePage - $ebookPerPage;
 $ebooks = query("SELECT * FROM ebooks ORDER BY id DESC LIMIT $index,$ebookPerPage");
 
