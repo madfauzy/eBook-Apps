@@ -6,28 +6,19 @@ if(isset($_POST["signup"])){
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <?php require "template/head.php"; ?>
     <link rel="stylesheet" href="assets/css/sign.css">
-    <link rel="icon" href="assets/img/icon_ebook.png">
     <title>Sign Up - eBook Apps</title>
 </head>
-<body>
-    <div class="form-sign text-center">
+<body class="h-100 align-items-center py-5">
+    <div class="form-sign">
         <form action="" method="post">
             <a href="index.php">
-                <img class="icon mb-3" src="assets/img/icon_ebook.png" alt="Icon eBook">
+                <img class="icon" src="assets/img/icon_ebook.png" alt="Icon eBook">
             </a>
-            <h1 class="fs-3 mb-3">Please Sign Up</h1>
+            <h1 class="fs-3 my-3">Please Sign Up</h1>
             <?php if(isset($result)) : ?>
                 <?php if($result === "Empty") : ?>
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -63,16 +54,16 @@ if(isset($_POST["signup"])){
                 <label for="username">Username</label>
             </div>
             <div class="form-floating">
-                <input class="form-control" type="password" id="password" name="password" placeholder="Password" autocomplete="off" required data-bs-toggle="tooltip" data-bs-placement="right" title="Password must be at least 8 characters long">
+                <input class="form-control password" type="password" id="password" name="password" placeholder="Password" autocomplete="off" required data-bs-toggle="tooltip" data-bs-placement="right" title="Password must be at least 8 characters long">
                 <label for="password">Password</label>
             </div>
             <div class="form-floating">
                 <input class="form-control" type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" autocomplete="off" required>
                 <label for="confirmPassword">Confirm Password</label>
             </div>
-            <button class="w-100 btn btn-lg btn-warning mt-3" type="submit" name="signup">Sign Up</button>
-            <p class="my-3">Already have an account? <a class="link-danger text-decoration-none fw-bold" href="login.php">Sign In</a></p>
-            <p class="mt-5 mb-3 text-muted">&copy; 2021 Copyright <a class="link-warning text-decoration-none fw-bold" href="https://github.com/madfauzy" target="_blank" rel="noopener">Ahmad Fauzy</a></p>
+            <button class="w-100 btn btn-lg btn-warning my-3" type="submit" name="signup">Sign Up</button>
+            <p>Already have an account? <a class="link-danger text-decoration-none fw-bold" href="login.php">Sign In</a></p>
+            <p class="mt-5 mb-3 text-muted">&copy; 2022 Copyright <a class="link-warning text-decoration-none fw-bold" href="https://github.com/madfauzy" target="_blank" rel="noopener">Ahmad Fauzy</a></p>
         </form>
     </div>
 
@@ -83,9 +74,9 @@ if(isset($_POST["signup"])){
     <script>
         let timerInterval
         Swal.fire({
-            title: 'Success!',
-            html: 'You Will Be Redirected!',
-            icon: 'success',
+            title: "Success!",
+            html: "You Will Be Redirected!",
+            icon: "success",
             allowOutsideClick: false,
             timer: 2000,
             timerProgressBar: true,
@@ -95,9 +86,9 @@ if(isset($_POST["signup"])){
             willClose: () => {
                 clearInterval(timerInterval)
             }
-        }).then((result) => {
-            if (result.dismiss === Swal.DismissReason.timer) {
-                window.location.href = 'login.php';
+        }).then(result => {
+            if(result.dismiss === Swal.DismissReason.timer){
+                window.location.href = "login.php";
             }
         });
     </script>

@@ -1,11 +1,13 @@
-const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+// Bootstrap Tooltips
+const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
 const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-    return new bootstrap.Tooltip(tooltipTriggerEl)
-})
+    return new bootstrap.Tooltip(tooltipTriggerEl);
+});
 
-$(document).ready(function(){
-    $(".delete-ebook").on("click", function(){
-        let getLink = $(this).attr("href");
+// Delete eBook Using jQuery
+$(document).ready(function () {
+    $(".delete-ebook").on("click",function () {
+        const getLink = $(this).attr("href");
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -14,27 +16,28 @@ $(document).ready(function(){
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!"
-        }).then((result) => {
-            if (result.isConfirmed) {
+        }).then(result => {
+            if(result.isConfirmed){
                 window.location.href = getLink;
             }
-        })
+        });
         return false;
-    })
+    });
 });
 
+// Live Search
 const keyword = document.getElementById("keyword");
 const content = document.getElementById("content");
 
-keyword.addEventListener("keyup",function(){
+keyword.addEventListener("keyup",function () {
     const xhr = new XMLHttpRequest();
 
-    xhr.onreadystatechange = function(){
+    xhr.onreadystatechange = function () {
         if(xhr.readyState == 4 && xhr.status == 200){
             content.innerHTML = xhr.responseText;
         }
     }
 
-    xhr.open("GET","assets/ajax/ebooks.php?keyword=" + keyword.value,true);
+    xhr.open("GET",`search.php?keyword=${keyword.value}`,true);
     xhr.send();
 });

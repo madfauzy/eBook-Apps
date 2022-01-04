@@ -1,5 +1,5 @@
 <?php 
-require "../../functions.php";
+require "functions.php";
 
 $ebookPerPage = 10;
 $totalEbook = count(query("SELECT * FROM ebooks"));
