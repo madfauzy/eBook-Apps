@@ -5,11 +5,12 @@
     <?php require "template/head.php"; ?>
     <title>Home - eBook Apps</title>
 </head>
-<body class="d-flex h-100 flex-column text-light bg-dark">
+<body class="d-flex flex-column h-100 text-light bg-dark">
     <nav class="navbar navbar-expand-lg navbar-dark mb-auto" aria-label="Navigation">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.php">
-                <img class="me-1" src="assets/img/icon_ebook.png" alt="Icon eBook"> eBook Apps
+                <img class="me-1" src="assets/img/icon_ebook.png" alt="Icon eBook"> 
+                eBook Apps
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -29,7 +30,7 @@
                     <?php endif; ?>
                 </ul>
                 <?php if(isset($_SESSION["username"])) : ?>
-                <div class="text-white mb-lg-0 mb-3">Signed in as <strong><?= $_SESSION["username"]; ?></strong></div>
+                <div class="mb-lg-0 mb-3">Signed in as <strong><?= $_SESSION["username"]; ?></strong></div>
                 <a class="btn btn-warning mx-lg-2 my-lg-0 mb-2 fw-bold" href="logout.php">Logout</a>
                 <?php else : ?>
                 <a class="btn btn-warning mx-lg-2 my-lg-0 mb-2 fw-bold" href="login.php">Sign In</a>
@@ -39,7 +40,7 @@
     </nav>
 
     <main class="container text-center">
-        <div class="col col-md-10 col-lg-8 col-xl-6 mx-auto">
+        <div class="col-md-10 col-lg-8 col-xl-6 mx-auto">
             <h1>Getting Started</h1>
             <p class="lead">The eBook Apps is a web application that helps you browse ebooks from anywhere using your smartphone and laptop. <span class="fw-bold">Sign Up to become a member</span></p>
             <p class="lead">
