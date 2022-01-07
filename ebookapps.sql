@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `ebooks` (
   `id` int(11) NOT NULL,
-  `title` varchar(100) NOT NULL,
-  `author` varchar(100) NOT NULL,
-  `category` varchar(100) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `author` varchar(255) NOT NULL,
+  `category` varchar(255) NOT NULL,
   `price` char(4) NOT NULL,
   `link` varchar(255) NOT NULL,
   `verified` char(3) NOT NULL,

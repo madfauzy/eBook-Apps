@@ -15,7 +15,16 @@ $ebooks = query("SELECT * FROM ebooks WHERE id = $id")[0];
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php require "template/head.php"; ?>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/img/icon_ebook.png">
     <title>Update eBook - eBook Apps</title>
 </head>
 <body>
@@ -39,7 +48,7 @@ $ebooks = query("SELECT * FROM ebooks WHERE id = $id")[0];
                         <a class="nav-link" href="create.php">Add eBook</a>
                     </li>
                 </ul>
-                <div class="text-white mb-lg-0 mb-3">Signed in as <strong><?= isset($_SESSION["username"]) ? $_SESSION["username"] : ""; ?></strong></div>
+                <div class="text-light mb-lg-0 mb-3 me-2">Signed in as <strong><?= $_SESSION["username"]; ?></strong></div>
                 <a class="btn btn-warning mx-lg-2 my-lg-0 mb-2 fw-bold" href="logout.php">Logout</a>
             </div>
         </div>
@@ -66,11 +75,11 @@ $ebooks = query("SELECT * FROM ebooks WHERE id = $id")[0];
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="title">Title</label>
-                        <input class="form-control" type="text" id="title" name="title" value="<?= $ebooks["title"]; ?>" maxlength="100" autocomplete="off" required autofocus>
+                        <input class="form-control" type="text" id="title" name="title" value="<?= $ebooks["title"]; ?>" autocomplete="off" required autofocus>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="author">Author</label>
-                        <input class="form-control" type="text" id="author" name="author" value="<?= $ebooks["author"]; ?>" maxlength="100" autocomplete="off" required>
+                        <input class="form-control" type="text" id="author" name="author" value="<?= $ebooks["author"]; ?>" autocomplete="off" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="category">Category</label>
@@ -99,7 +108,7 @@ $ebooks = query("SELECT * FROM ebooks WHERE id = $id")[0];
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="link">Link</label>
-                        <input class="form-control" type="text" id="link" name="link" value="<?= $ebooks["link"]; ?>" maxlength="100" autocomplete="off" required>
+                        <input class="form-control" type="text" id="link" name="link" value="<?= $ebooks["link"]; ?>" autocomplete="off" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Verified?</label><br>
@@ -125,7 +134,12 @@ $ebooks = query("SELECT * FROM ebooks WHERE id = $id")[0];
         </form>
     </main> 
 
-    <?php require "template/footer.php"; ?>
+    <footer class="bg-dark text-light p-sm-4 py-4 px-0">
+        <div class="container d-flex flex-column flex-lg-row justify-content-between align-items-center">
+            <div>&copy; 2022 Copyright <a class="link-warning text-decoration-none fw-bold" href="https://github.com/madfauzy" target="_blank" rel="noopener">Ahmad Fauzy</a>. All Rights Reserved.</div>
+            <div>Icon made by <a class="link-warning text-decoration-none fw-bold" href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank" rel="noopener">Freepik</a> from <a class="link-warning text-decoration-none fw-bold" href="https://www.flaticon.com/" title="Flaticon" target="_blank" rel="noopener">www.flaticon.com</a></div>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.0/dist/sweetalert2.all.min.js" integrity="sha256-nk6ExuG7ckFYKC1p3efjdB14TU+pnGwTra1Fnm6FvZ0=" crossorigin="anonymous"></script>
