@@ -1,4 +1,4 @@
-# ⚡️ eBook Apps
+# 📚 eBook Apps
 The eBook Apps is a web application that helps you browse ebooks from anywhere using your smartphone and laptop.
 
 ## 🚀 Getting Started 
