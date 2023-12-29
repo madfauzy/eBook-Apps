@@ -8,17 +8,17 @@ The eBook Apps is a web application that helps you browse ebooks from anywhere u
 
 To start running your project locally, follow these steps:
 
-First, clone the repository to the htdocs folder.
+First, clone the repository to the htdocs or www folder.
 
 ```bash
 git clone https://github.com/madfauzy/eBook-Apps.git
 ```
 
-Then, launch the XAMPP control panel.
+Then, launch the XAMPP control panel or Laragon.
 
-Then, **start** Apache and MySQL.
+Then, start Apache and MySQL.
 
-Then, run PHPMyAdmin in your browser.
+Then, run phpMyAdmin in your browser.
 
 ```text
 http://localhost/phpmyadmin/
