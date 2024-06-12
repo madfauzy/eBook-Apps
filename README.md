@@ -32,6 +32,21 @@ Finally, run the eBooks Apps.
 http://localhost/eBook-Apps/
 ```
 
+## 🐳 Getting Started with Docker
+
+If you want to use Docker instead, clone the repository, make sure to have Docker and Docker Compose installed and the Docker daemon running, then execute:
+
+```text
+docker-compose up -d
+```
+
+and run the eBooks Apps.
+
+```text
+http://localhost/eBook-Apps/
+```
+
+
 ## 📍 Login Account For Local
 
 ```text
