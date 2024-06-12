@@ -1,0 +1,19 @@
+FROM php:8.3-apache
+
+COPY . /var/www/html
+
+# Copy existing application directory permissions
+COPY --chown=www:www . /var/www
+
+# Add user and password for MySql connection in the functions.php file
+RUN sed -i '8s/.*/return mysqli_connect('\''my-mysql'\'', '\''ebookUser'\'', '\''ebookPass'\'', '\''ebookapps'\'');/' functions.php
+
+# Use the Development configuration (enables logs)
+RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
+
+RUN a2enmod rewrite
+
+# Install PHP extensions
+RUN docker-php-ext-install mysqli pdo pdo_mysql
+
+WORKDIR /var/www/html

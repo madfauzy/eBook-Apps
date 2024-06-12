@@ -1,0 +1,29 @@
+name: ebooksapp
+
+services:
+  # Apache and PHP service
+  php:
+    build:
+      context: .
+      dockerfile: DockerfilePHP
+    container_name: ebookapp
+    ports:
+      - "80:80"
+    depends_on:
+      - my-mysql
+
+  # MySQL service
+  my-mysql:
+    build:
+      context: .
+      dockerfile: DockerfileMysql
+    container_name: ebookmysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: rootPass
+      MYSQL_DATABASE: ebookapps
+      MYSQL_USER: ebookUser
+      MYSQL_PASSWORD: ebookPass
+    volumes:
+      - /mysqldata:/var/lib/mysql

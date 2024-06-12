@@ -1,0 +1,7 @@
+FROM mysql:8.4
+
+COPY ebookapps.sql /docker-entrypoint-initdb.d/ebookapps.sql
+
+RUN chown -R mysql:root /var/lib/mysql/
+
+EXPOSE 3306
