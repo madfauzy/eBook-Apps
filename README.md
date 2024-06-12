@@ -43,7 +43,7 @@ docker-compose up -d
 and run the eBooks Apps.
 
 ```text
-http://localhost/eBook-Apps/
+http://localhost/
 ```
 
 
