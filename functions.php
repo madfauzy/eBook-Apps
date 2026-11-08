@@ -5,6 +5,17 @@ mysqli_report(MYSQLI_REPORT_OFF);
 
 function connect()
 {
+    $configFile = __DIR__ . '/config.local.php';
+    if (file_exists($configFile)) {
+        $config = require $configFile;
+        return mysqli_connect(
+            $config['host'] ?? 'localhost',
+            $config['user'] ?? 'root',
+            $config['pass'] ?? '',
+            $config['name'] ?? 'ebookapps'
+        );
+    }
+
     return mysqli_connect('localhost', 'root', '', 'ebookapps');
 }
 
